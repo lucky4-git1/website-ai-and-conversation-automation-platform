@@ -10,8 +10,12 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
+# testing (local only)
 /coverage
+/test-results/
+/playwright-report/
+playwright.config.ts
+e2e/
 
 # next.js
 /.next/
