@@ -147,7 +147,7 @@ function ConversationsAdminContent() {
               onClick={() => setStatusFilter(st)}
               className={`text-xs px-2.5 py-1 rounded-xl font-medium transition duration-150 ${
                 statusFilter === st
-                  ? 'bg-indigo-600 text-white shadow-[0_2px_8px_rgba(99,102,241,0.35)]'
+                  ? 'bg-orange-600 text-white shadow-[0_2px_8px_rgba(249,115,22,0.35)]'
                   : 'bg-zinc-850 hover:bg-zinc-800 text-zinc-400 border border-white/[0.04]'
               }`}
             >
@@ -189,7 +189,7 @@ function ConversationsAdminContent() {
                   onClick={() => setSelectedConvId(conv.id)}
                   className={`p-3.5 cursor-pointer transition duration-150 text-xs ${
                     selectedConvId === conv.id
-                      ? 'bg-indigo-950/40 border-l-2 border-indigo-500'
+                      ? 'bg-orange-950/40 border-l-2 border-orange-500'
                       : 'hover:bg-white/[0.02]'
                   }`}
                 >
@@ -204,7 +204,7 @@ function ConversationsAdminContent() {
                         ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
                         : conv.status === 'RESOLVED'
                         ? 'bg-zinc-800 text-zinc-500 border-zinc-700'
-                        : 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30'
+                        : 'bg-orange-500/20 text-orange-300 border-orange-500/30'
                     }`}>
                       {conv.status.replace('_', ' ')}
                     </span>
@@ -252,7 +252,7 @@ function ConversationsAdminContent() {
                   {selectedConvData.conversation?.status !== 'HUMAN_ACTIVE' && selectedConvData.conversation?.status !== 'RESOLVED' && (
                     <button
                       onClick={handleAssignToMe}
-                      className="text-xs bg-indigo-600 hover:bg-indigo-500 active:scale-[0.97] text-white font-medium px-3.5 py-1.5 rounded-xl transition duration-150 shadow-[0_2px_8px_rgba(99,102,241,0.3)]"
+                      className="text-xs bg-orange-600 hover:bg-orange-500 active:scale-[0.97] text-white font-medium px-3.5 py-1.5 rounded-xl transition duration-150 shadow-[0_2px_8px_rgba(249,115,22,0.3)]"
                     >
                       Assign to Me
                     </button>
@@ -286,7 +286,7 @@ function ConversationsAdminContent() {
                     <div className="flex items-end gap-2 max-w-[85%]">
                       {msg.senderType !== 'AGENT' && msg.senderType !== 'SYSTEM' && (
                         <div className="w-6 h-6 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center shrink-0 text-zinc-300 text-xs shadow-xs">
-                          {msg.senderType === 'AI' ? <Bot className="w-3.5 h-3.5 text-indigo-400" /> : <User className="w-3.5 h-3.5 text-emerald-400" />}
+                          {msg.senderType === 'AI' ? <Bot className="w-3.5 h-3.5 text-orange-400" /> : <User className="w-3.5 h-3.5 text-emerald-400" />}
                         </div>
                       )}
 
@@ -295,7 +295,7 @@ function ConversationsAdminContent() {
                           msg.senderType === 'VISITOR'
                             ? 'bg-[#181a24] border border-white/[0.08] text-zinc-100'
                             : msg.senderType === 'AGENT'
-                            ? 'bg-indigo-600 text-white shadow-[0_2px_10px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]'
+                            ? 'bg-orange-600 text-white shadow-[0_2px_10px_rgba(249,115,22,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]'
                             : msg.senderType === 'SYSTEM'
                             ? 'bg-amber-950/40 border border-amber-800/40 text-amber-200 text-center w-full'
                             : 'bg-[#181a24] border border-white/[0.08] text-zinc-100'
@@ -331,13 +331,13 @@ function ConversationsAdminContent() {
                     value={replyText}
                     onChange={(e) => setReplyText(e.target.value)}
                     placeholder="Reply as Human Specialist (Alex Mercer)..."
-                    className="flex-1 bg-[#0a0b0e] border border-white/[0.1] text-zinc-100 text-xs rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                    className="flex-1 bg-[#0a0b0e] border border-white/[0.1] text-zinc-100 text-xs rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 transition duration-150"
                     disabled={isSending}
                   />
                   <button
                     type="submit"
                     disabled={!replyText.trim() || isSending}
-                    className="bg-indigo-600 hover:bg-indigo-500 active:scale-[0.97] disabled:opacity-40 text-white px-4 py-2.5 rounded-xl text-xs font-semibold shadow-[0_2px_8px_rgba(99,102,241,0.3)] transition duration-150 flex items-center gap-1.5"
+                    className="bg-orange-600 hover:bg-orange-500 active:scale-[0.97] disabled:opacity-40 text-white px-4 py-2.5 rounded-xl text-xs font-semibold shadow-[0_2px_8px_rgba(249,115,22,0.3)] transition duration-150 flex items-center gap-1.5"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>Send Reply</span>

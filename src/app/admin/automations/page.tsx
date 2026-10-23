@@ -63,7 +63,7 @@ export default function AutomationsAdminPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20">
               Autonomous Sequences
             </span>
           </div>
@@ -77,7 +77,7 @@ export default function AutomationsAdminPage() {
           <button
             onClick={handleRunWorkerNow}
             disabled={isRunningWorker}
-            className="flex items-center space-x-1.5 text-xs bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-medium px-4 py-2.5 rounded-xl shadow-[0_2px_10px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.25)] transition duration-150 disabled:opacity-50"
+            className="flex items-center space-x-1.5 text-xs bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white font-medium px-4 py-2.5 rounded-xl shadow-[0_2px_10px_rgba(249,115,22,0.35),inset_0_1px_0_0_rgba(255,255,255,0.25)] transition duration-150 disabled:opacity-50"
           >
             <Play className={`w-3.5 h-3.5 ${isRunningWorker ? 'animate-spin' : ''}`} />
             <span>{isRunningWorker ? 'Executing Background Jobs...' : 'Trigger Workflow Worker'}</span>
@@ -87,7 +87,7 @@ export default function AutomationsAdminPage() {
 
       {/* Worker Run Feedback Alert */}
       {workerResult && (
-        <div className="p-4 rounded-xl bg-[#151724] text-white border border-indigo-500/30 text-xs flex items-center justify-between shadow-[0_2px_12px_rgba(99,102,241,0.15)]">
+        <div className="p-4 rounded-xl bg-[#151724] text-white border border-orange-500/30 text-xs flex items-center justify-between shadow-[0_2px_12px_rgba(249,115,22,0.15)]">
           <div className="flex items-center space-x-3">
             <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
             <div>
@@ -107,7 +107,7 @@ export default function AutomationsAdminPage() {
           <div key={wf.id} className="bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] p-6 space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2.5">
-                <Workflow className="w-4 h-4 text-indigo-400" />
+                <Workflow className="w-4 h-4 text-orange-400" />
                 <h3 className="font-bold text-sm text-white">{wf.name}</h3>
               </div>
               <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-semibold px-2 py-0.5 rounded-full font-mono">
@@ -120,13 +120,13 @@ export default function AutomationsAdminPage() {
             <div className="bg-[#0a0b0e] border border-white/[0.08] rounded-xl p-3.5 space-y-2 text-xs">
               <div className="flex items-center justify-between">
                 <span className="text-zinc-400 font-mono text-[11px]">Trigger Event:</span>
-                <span className="font-mono font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded text-[11px]">{wf.trigger_event}</span>
+                <span className="font-mono font-bold text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded text-[11px]">{wf.trigger_event}</span>
               </div>
 
               <div className="flex items-center justify-between">
                 <span className="text-zinc-400 font-mono text-[11px]">Quiet Hours:</span>
                 <span className="font-medium text-zinc-200 flex items-center gap-1.5 font-mono text-[11px]">
-                  <Moon className="w-3.5 h-3.5 text-indigo-400" />
+                  <Moon className="w-3.5 h-3.5 text-orange-400" />
                   {wf.quietHours?.enabled ? `${wf.quietHours.start} - ${wf.quietHours.end} (${wf.quietHours.timezone || 'UTC'})` : 'Disabled'}
                 </span>
               </div>
@@ -139,7 +139,7 @@ export default function AutomationsAdminPage() {
                   <div key={idx} className="flex items-center space-x-2 text-xs bg-[#0a0b0e] border border-white/[0.06] text-zinc-300 px-3 py-2 rounded-xl font-mono">
                     <span className="text-zinc-500">Step {act.step}:</span>
                     <span className="font-bold text-white">{act.action}</span>
-                    {act.provider && <span className="text-indigo-400">({act.provider})</span>}
+                    {act.provider && <span className="text-orange-400">({act.provider})</span>}
                   </div>
                 ))}
               </div>
@@ -197,7 +197,7 @@ export default function AutomationsAdminPage() {
                           : ex.status === 'CANCELLED'
                           ? 'bg-rose-500/20 text-rose-300 border-rose-500/30'
                           : ex.status === 'RUNNING'
-                          ? 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30 animate-pulse'
+                          ? 'bg-orange-500/20 text-orange-300 border-orange-500/30 animate-pulse'
                           : 'bg-amber-500/20 text-amber-300 border-amber-500/30'
                       }`}>
                         {ex.status}

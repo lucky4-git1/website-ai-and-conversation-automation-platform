@@ -42,7 +42,7 @@ export default function AnalyticsAdminPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20">
               Operational Intelligence
             </span>
           </div>
@@ -57,7 +57,7 @@ export default function AnalyticsAdminPage() {
           disabled={isLoading}
           className="flex items-center space-x-1.5 text-xs bg-zinc-800 hover:bg-zinc-700 active:scale-[0.98] text-zinc-200 px-3.5 py-2.5 rounded-xl border border-white/[0.08] transition duration-150"
         >
-          <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-indigo-400' : ''}`} />
+          <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-orange-400' : ''}`} />
           <span>Refresh Telemetry</span>
         </button>
       </div>
@@ -72,7 +72,7 @@ export default function AnalyticsAdminPage() {
 
         <div className="bg-[#12131c] p-5 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] space-y-1">
           <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-400">Chat Engagement Rate</div>
-          <div className="text-2xl font-bold text-indigo-400 font-mono">{metrics?.chatEngagementRate || '0.0%'}</div>
+          <div className="text-2xl font-bold text-orange-400 font-mono">{metrics?.chatEngagementRate || '0.0%'}</div>
           <div className="text-[11px] text-zinc-500 font-mono">{metrics?.conversationsStarted || 0} started chats</div>
         </div>
 
@@ -110,7 +110,7 @@ export default function AnalyticsAdminPage() {
               </div>
               <div className="w-full bg-[#0a0b0e] border border-white/[0.06] h-3 rounded-full overflow-hidden p-0.5">
                 <div
-                  className="bg-indigo-600 h-full rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(99,102,241,0.5)]"
+                  className="bg-orange-600 h-full rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(249,115,22,0.5)]"
                   style={{ width: `${Math.max(item.percentage, 2)}%` }}
                 ></div>
               </div>
@@ -123,7 +123,7 @@ export default function AnalyticsAdminPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] space-y-2">
           <div className="flex items-center space-x-2 text-zinc-400 mb-1">
-            <Clock className="w-4 h-4 text-indigo-400" />
+            <Clock className="w-4 h-4 text-orange-400" />
             <h3 className="font-bold text-xs uppercase tracking-wider font-mono">Average Latency</h3>
           </div>
           <div className="text-2xl font-bold text-white font-mono">{metrics?.avgLatencyMs || 320} ms</div>
@@ -147,7 +147,7 @@ export default function AnalyticsAdminPage() {
 
         <div className="bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] space-y-2">
           <div className="flex items-center space-x-2 text-zinc-400 mb-1">
-            <ShieldAlert className="w-4 h-4 text-indigo-400" />
+            <ShieldAlert className="w-4 h-4 text-orange-400" />
             <h3 className="font-bold text-xs uppercase tracking-wider font-mono">Zero-Hallucination Safe Mode</h3>
           </div>
           <div className="text-2xl font-bold text-emerald-400 font-mono">Active</div>

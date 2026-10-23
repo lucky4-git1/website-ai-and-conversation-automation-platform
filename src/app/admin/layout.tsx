@@ -47,12 +47,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {/* Brand Header */}
         <div className="p-4 border-b border-white/[0.06] flex items-center justify-between">
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-white shadow-[0_2px_10px_rgba(99,102,241,0.4),inset_0_1px_0_0_rgba(255,255,255,0.25)]">
+            <div className="w-8 h-8 rounded-xl bg-orange-600 flex items-center justify-center font-bold text-white shadow-[0_2px_10px_rgba(249,115,22,0.4),inset_0_1px_0_0_rgba(255,255,255,0.25)]">
               S
             </div>
             <div>
               <span className="font-bold text-sm tracking-tight text-white block">SpeakForMe</span>
-              <span className="text-[10px] text-indigo-400 font-mono block">Enterprise Console</span>
+              <span className="text-[10px] text-orange-400 font-mono block">Enterprise Console</span>
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 href={item.href}
                 className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition duration-150 ${
                   isActive
-                    ? 'bg-indigo-600 text-white shadow-[0_2px_8px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]'
+                    ? 'bg-orange-600 text-white shadow-[0_2px_8px_rgba(249,115,22,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]'
                     : 'text-zinc-400 hover:bg-zinc-800/80 hover:text-white'
                 }`}
               >
@@ -94,7 +94,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             className="flex items-center justify-between p-2 rounded-xl bg-zinc-850 hover:bg-zinc-800 text-zinc-200 border border-white/[0.06] transition duration-150"
           >
             <div className="flex items-center space-x-2">
-              <ExternalLink className="w-3.5 h-3.5 text-indigo-400" />
+              <ExternalLink className="w-3.5 h-3.5 text-orange-400" />
               <span>View Client Portal</span>
             </div>
             <ChevronRight className="w-3 h-3 text-zinc-500" />
@@ -124,12 +124,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-xs bg-zinc-900 text-zinc-300 px-3 py-1.5 rounded-full border border-white/[0.08]">
-              <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" />
+              <ShieldCheck className="w-3.5 h-3.5 text-orange-400" />
               <span>Grounded Knowledge Mode: <strong>Strict (No-Hallucination)</strong></span>
             </div>
 
             <div className="flex items-center space-x-2 pl-2 border-l border-zinc-800">
-              <div className="w-7 h-7 rounded-lg bg-indigo-600/30 border border-indigo-500/40 text-indigo-300 font-bold flex items-center justify-center text-xs">
+              <div className="w-7 h-7 rounded-lg bg-orange-600/30 border border-orange-500/40 text-orange-300 font-bold flex items-center justify-center text-xs">
                 AM
               </div>
               <div className="text-xs">

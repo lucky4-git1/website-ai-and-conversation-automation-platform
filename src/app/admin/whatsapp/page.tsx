@@ -141,7 +141,7 @@ export default function WhatsAppAdminPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20">
               Meta Cloud Gateway
             </span>
           </div>
@@ -164,7 +164,7 @@ export default function WhatsAppAdminPage() {
       </div>
 
       {statusMessage && (
-        <div className="p-4 rounded-xl bg-[#151724] text-white text-xs border border-indigo-500/30 flex items-center justify-between shadow-[0_2px_12px_rgba(99,102,241,0.15)]">
+        <div className="p-4 rounded-xl bg-[#151724] text-white text-xs border border-orange-500/30 flex items-center justify-between shadow-[0_2px_12px_rgba(249,115,22,0.15)]">
           <span>{statusMessage}</span>
           <button onClick={() => setStatusMessage(null)} className="text-zinc-400 hover:text-white p-1">✕</button>
         </div>
@@ -175,7 +175,7 @@ export default function WhatsAppAdminPage() {
         {/* Credentials Form (7 cols) */}
         <div className="lg:col-span-7 bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] p-6 space-y-4">
           <div className="flex items-center space-x-2.5 border-b border-white/[0.08] pb-3">
-            <Key className="w-4 h-4 text-indigo-400" />
+            <Key className="w-4 h-4 text-orange-400" />
             <h3 className="font-bold text-sm text-white">Meta WhatsApp Cloud API Credentials</h3>
           </div>
 
@@ -187,7 +187,7 @@ export default function WhatsAppAdminPage() {
                 value={phoneNumberId}
                 onChange={(e) => setPhoneNumberId(e.target.value)}
                 placeholder="e.g. 108392019482910"
-                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
               />
             </div>
 
@@ -198,7 +198,7 @@ export default function WhatsAppAdminPage() {
                 value={wabaId}
                 onChange={(e) => setWabaId(e.target.value)}
                 placeholder="e.g. 984729104820192"
-                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
               />
             </div>
 
@@ -209,7 +209,7 @@ export default function WhatsAppAdminPage() {
                 value={accessToken}
                 onChange={(e) => setAccessToken(e.target.value)}
                 placeholder="Paste Meta System User Token (EAA...)"
-                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
               />
               <span className="text-[10px] text-zinc-500 mt-1 block">
                 Never exposed to the client. Token is used exclusively for server-to-server Meta Graph API calls.
@@ -223,7 +223,7 @@ export default function WhatsAppAdminPage() {
                 value={appSecret}
                 onChange={(e) => setAppSecret(e.target.value)}
                 placeholder="Paste Meta App Secret from App Settings > Basic"
-                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
               />
             </div>
 
@@ -233,7 +233,7 @@ export default function WhatsAppAdminPage() {
                 type="text"
                 value={verifyToken}
                 onChange={(e) => setVerifyToken(e.target.value)}
-                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-indigo-500 focus:outline-none"
+                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-orange-500 focus:outline-none"
               />
               <div className="mt-2 p-3 bg-[#0a0b0e] border border-white/[0.06] rounded-xl text-[11px] text-zinc-400 font-mono">
                 Webhook Callback URL: <strong className="text-white">https://yourdomain.com/api/v1/webhooks/whatsapp</strong>
@@ -243,7 +243,7 @@ export default function WhatsAppAdminPage() {
             <button
               type="submit"
               disabled={isSaving}
-              className="w-full bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-semibold py-2.5 rounded-xl transition duration-150 shadow-[0_2px_8px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)] disabled:opacity-50"
+              className="w-full bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white font-semibold py-2.5 rounded-xl transition duration-150 shadow-[0_2px_8px_rgba(249,115,22,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)] disabled:opacity-50"
             >
               {isSaving ? 'Verifying with Meta Cloud API...' : 'Save & Verify Connection'}
             </button>
@@ -294,7 +294,7 @@ export default function WhatsAppAdminPage() {
                   value={testPhone}
                   onChange={(e) => setTestPhone(e.target.value)}
                   placeholder="+1 (555) 019-2834"
-                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
                 />
               </div>
 

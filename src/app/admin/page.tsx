@@ -62,7 +62,7 @@ export default function AdminOverviewPage() {
         <div>
           <div className="flex items-center space-x-2">
             <h1 className="text-xl font-bold text-white tracking-tight">Executive Operational Overview</h1>
-            <span className="bg-indigo-500/15 text-indigo-400 border border-indigo-500/30 text-[10px] font-mono px-2 py-0.5 rounded-full font-semibold">
+            <span className="bg-orange-500/15 text-orange-400 border border-orange-500/30 text-[10px] font-mono px-2 py-0.5 rounded-full font-semibold">
               SpeakForMe Engine
             </span>
           </div>
@@ -77,13 +77,13 @@ export default function AdminOverviewPage() {
             disabled={isLoading}
             className="flex items-center space-x-1.5 text-xs bg-zinc-800/80 hover:bg-zinc-700/80 active:scale-[0.97] text-zinc-200 px-3 py-2 rounded-xl border border-white/[0.08] transition duration-150"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-indigo-400' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-orange-400' : ''}`} />
             <span>Refresh Telemetry</span>
           </button>
 
           <Link
             href="/admin/conversations"
-            className="flex items-center space-x-1.5 text-xs bg-indigo-600 hover:bg-indigo-500 active:scale-[0.97] text-white font-medium px-4 py-2 rounded-xl shadow-[0_2px_10px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)] transition duration-150"
+            className="flex items-center space-x-1.5 text-xs bg-orange-600 hover:bg-orange-500 active:scale-[0.97] text-white font-medium px-4 py-2 rounded-xl shadow-[0_2px_10px_rgba(249,115,22,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)] transition duration-150"
           >
             <MessageSquare className="w-3.5 h-3.5" />
             <span>Open Live Inbox</span>
@@ -97,7 +97,7 @@ export default function AdminOverviewPage() {
         <div className="bg-[#12131c] p-5 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
           <div className="flex items-center justify-between text-zinc-400 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider font-mono">Chat Engagement</span>
-            <MessageSquare className="w-4 h-4 text-indigo-400" />
+            <MessageSquare className="w-4 h-4 text-orange-400" />
           </div>
           <div className="text-2xl font-bold text-white font-mono">
             {metrics?.chatEngagementRate || '0.0%'}
@@ -210,7 +210,7 @@ export default function AdminOverviewPage() {
         <div className="bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] p-5 space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="text-sm font-bold text-white tracking-tight">Integration Health Status</h2>
-            <Link href="/admin/crm" className="text-xs text-indigo-400 hover:underline">Manage</Link>
+            <Link href="/admin/crm" className="text-xs text-orange-400 hover:underline">Manage</Link>
           </div>
 
           <div className="space-y-3">
@@ -278,7 +278,7 @@ export default function AdminOverviewPage() {
             <h2 className="text-sm font-bold text-white tracking-tight">Recent Captured & Qualified Leads</h2>
             <p className="text-[11px] text-zinc-400">Heuristic explainable lead scores derived from explicit business signals.</p>
           </div>
-          <Link href="/admin/leads" className="text-xs text-indigo-400 font-semibold hover:underline flex items-center gap-1">
+          <Link href="/admin/leads" className="text-xs text-orange-400 font-semibold hover:underline flex items-center gap-1">
             <span>View All Leads</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -319,7 +319,7 @@ export default function AdminOverviewPage() {
                     <td className="px-5 py-3.5 text-center">
                       <span className={`inline-block font-mono font-bold text-xs px-2.5 py-0.5 rounded-full border ${
                         lead.score >= 60
-                          ? 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30'
+                          ? 'bg-orange-500/15 text-orange-300 border-orange-500/30'
                           : 'bg-zinc-800 text-zinc-400 border-zinc-700'
                       }`}>
                         {lead.score}/100

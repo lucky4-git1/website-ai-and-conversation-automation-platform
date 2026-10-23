@@ -138,7 +138,7 @@ export default function CatalogAdminPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20">
               Commercial Engine
             </span>
           </div>
@@ -150,7 +150,7 @@ export default function CatalogAdminPage() {
 
         <button
           onClick={() => setShowAddModal(true)}
-          className="flex items-center space-x-1.5 text-xs bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-medium px-4 py-2.5 rounded-xl shadow-[0_2px_10px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.25)] transition duration-150"
+          className="flex items-center space-x-1.5 text-xs bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white font-medium px-4 py-2.5 rounded-xl shadow-[0_2px_10px_rgba(249,115,22,0.35),inset_0_1px_0_0_rgba(255,255,255,0.25)] transition duration-150"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>Add Catalog Item</span>
@@ -161,7 +161,7 @@ export default function CatalogAdminPage() {
       <div className="bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] p-6 space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Sparkles className="w-4 h-4 text-indigo-400" />
+            <Sparkles className="w-4 h-4 text-orange-400" />
             <h2 className="text-sm font-bold text-white">Recommendation Rule Simulator</h2>
           </div>
           <span className="text-[11px] text-zinc-400 font-mono">Tests catalog heuristic matching against visitor queries</span>
@@ -173,11 +173,11 @@ export default function CatalogAdminPage() {
             value={simQuery}
             onChange={(e) => setSimQuery(e.target.value)}
             placeholder="Try: 'Need WhatsApp and CRM sync for our sales team' or 'Looking for starter chatbot'..."
-            className="flex-1 bg-[#0a0b0e] border border-zinc-700/80 text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+            className="flex-1 bg-[#0a0b0e] border border-zinc-700/80 text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
           />
           <button
             type="submit"
-            className="bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white text-xs px-4 py-2.5 rounded-xl font-medium transition duration-150 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]"
+            className="bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white text-xs px-4 py-2.5 rounded-xl font-medium transition duration-150 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]"
           >
             Simulate Match
           </button>
@@ -193,7 +193,7 @@ export default function CatalogAdminPage() {
                 <div key={idx} className="bg-[#12131c] p-3.5 rounded-xl border border-white/[0.08] text-xs space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-white">{m.item.name}</span>
-                    <span className="text-indigo-400 font-bold font-mono">{m.item.priceDisplay}</span>
+                    <span className="text-orange-400 font-bold font-mono">{m.item.priceDisplay}</span>
                   </div>
                   <ul className="text-[11px] text-zinc-400 space-y-1">
                     {m.reasons.map((r: string, i: number) => (
@@ -216,7 +216,7 @@ export default function CatalogAdminPage() {
           <div key={item.id} className="bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] p-6 flex flex-col justify-between space-y-4">
             <div className="space-y-3.5">
               <div className="flex items-center justify-between">
-                <span className="bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider font-mono">
+                <span className="bg-orange-500/20 text-orange-300 border border-orange-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider font-mono">
                   {item.category}
                 </span>
                 <span className="text-zinc-500 text-xs font-mono">{item.availability}</span>
@@ -224,7 +224,7 @@ export default function CatalogAdminPage() {
 
               <div>
                 <h3 className="font-bold text-base text-white">{item.name}</h3>
-                <div className="text-xl font-extrabold text-indigo-400 mt-1 font-mono">{item.priceDisplay}</div>
+                <div className="text-xl font-extrabold text-orange-400 mt-1 font-mono">{item.priceDisplay}</div>
               </div>
 
               <p className="text-xs text-zinc-400 leading-relaxed">{item.description}</p>
@@ -234,7 +234,7 @@ export default function CatalogAdminPage() {
                 <ul className="text-xs text-zinc-300 space-y-1.5">
                   {item.features?.map((f: string, i: number) => (
                     <li key={i} className="flex items-start gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-orange-400 shrink-0 mt-0.5" />
                       <span>{f}</span>
                     </li>
                   ))}
@@ -284,7 +284,7 @@ export default function CatalogAdminPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Starter Automation Tier"
-                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
                 />
               </div>
 
@@ -297,7 +297,7 @@ export default function CatalogAdminPage() {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     placeholder="e.g. Conversational AI"
-                    className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                    className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
                   />
                 </div>
                 <div>
@@ -308,7 +308,7 @@ export default function CatalogAdminPage() {
                     value={priceDisplay}
                     onChange={(e) => setPriceDisplay(e.target.value)}
                     placeholder="$499 / mo"
-                    className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600 font-mono"
+                    className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600 font-mono"
                   />
                 </div>
               </div>
@@ -321,7 +321,7 @@ export default function CatalogAdminPage() {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Short description of this service tier..."
-                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
                 />
               </div>
 
@@ -332,7 +332,7 @@ export default function CatalogAdminPage() {
                   value={featuresStr}
                   onChange={(e) => setFeaturesStr(e.target.value)}
                   placeholder="Feature 1&#10;Feature 2&#10;Feature 3"
-                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-indigo-500 focus:outline-none font-mono text-[11px] placeholder:text-zinc-600"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-orange-500 focus:outline-none font-mono text-[11px] placeholder:text-zinc-600"
                 />
               </div>
 
@@ -343,7 +343,7 @@ export default function CatalogAdminPage() {
                   value={tagsStr}
                   onChange={(e) => setTagsStr(e.target.value)}
                   placeholder="popular, crm, smb"
-                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
                 />
               </div>
 
@@ -357,7 +357,7 @@ export default function CatalogAdminPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-semibold transition duration-150 shadow-[0_2px_8px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]"
+                  className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white font-semibold transition duration-150 shadow-[0_2px_8px_rgba(249,115,22,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]"
                 >
                   Create Item
                 </button>

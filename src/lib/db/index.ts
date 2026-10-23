@@ -56,7 +56,7 @@ function seedInitialData(db: DatabaseSync) {
 
     // 3. Default Installation
     const defaultWidgetConfig = JSON.stringify({
-      primaryColor: '#6366f1', // Electric Iris / Indigo
+      primaryColor: '#f97316', // Warm Burnt Tangerine / Terracotta (Zero Blue)
       title: 'SpeakForMe AI Concierge',
       welcomeMessage: 'Hi there! 👋 Welcome to SpeakForMe. How can I help you automate conversations and accelerate conversions today?',
       suggestedQuestions: [

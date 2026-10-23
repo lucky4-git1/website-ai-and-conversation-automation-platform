@@ -47,11 +47,11 @@
   button.style.width = '58px';
   button.style.height = '58px';
   button.style.borderRadius = '18px';
-  button.style.backgroundColor = '#6366f1'; // Electric Iris
+  button.style.backgroundColor = '#f97316'; // Warm Tangerine / Terracotta
   button.style.color = '#ffffff';
   button.style.border = '1px solid rgba(255, 255, 255, 0.2)';
   button.style.cursor = 'pointer';
-  button.style.boxShadow = '0 10px 25px -4px rgba(99, 102, 241, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.25)';
+  button.style.boxShadow = '0 10px 25px -4px rgba(249, 115, 22, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.25)';
   button.style.display = 'flex';
   button.style.alignItems = 'center';
   button.style.justifyContent = 'center';
@@ -84,8 +84,8 @@
     } else {
       iframe.style.display = 'none';
       button.innerHTML = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
-      button.style.backgroundColor = '#6366f1';
-      button.style.boxShadow = '0 10px 25px -4px rgba(99, 102, 241, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.25)';
+      button.style.backgroundColor = '#f97316';
+      button.style.boxShadow = '0 10px 25px -4px rgba(249, 115, 22, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.25)';
     }
   });
 
@@ -94,8 +94,8 @@
       isOpen = false;
       iframe.style.display = 'none';
       button.innerHTML = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
-      button.style.backgroundColor = '#6366f1';
-      button.style.boxShadow = '0 10px 25px -4px rgba(99, 102, 241, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.25)';
+      button.style.backgroundColor = '#f97316';
+      button.style.boxShadow = '0 10px 25px -4px rgba(249, 115, 22, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.25)';
     }
   });
 

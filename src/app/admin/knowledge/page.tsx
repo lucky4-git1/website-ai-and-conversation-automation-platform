@@ -141,7 +141,7 @@ export default function KnowledgeBaseAdminPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20">
               Grounded AI Core
             </span>
           </div>
@@ -154,7 +154,7 @@ export default function KnowledgeBaseAdminPage() {
         <div className="flex items-center space-x-2">
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex items-center space-x-1.5 text-xs bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-medium px-4 py-2.5 rounded-xl shadow-[0_2px_10px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.25)] transition duration-150"
+            className="flex items-center space-x-1.5 text-xs bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white font-medium px-4 py-2.5 rounded-xl shadow-[0_2px_10px_rgba(249,115,22,0.35),inset_0_1px_0_0_rgba(255,255,255,0.25)] transition duration-150"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Ingest Source</span>
@@ -166,7 +166,7 @@ export default function KnowledgeBaseAdminPage() {
       <div className="bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] p-6 space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Sparkles className="w-4 h-4 text-indigo-400" />
+            <Sparkles className="w-4 h-4 text-orange-400" />
             <h2 className="text-sm font-bold text-white">RAG Grounding & Zero-Hallucination Tester</h2>
           </div>
           <span className="text-[11px] text-zinc-400 font-mono">Evaluates actual tenant chunks in real-time</span>
@@ -178,12 +178,12 @@ export default function KnowledgeBaseAdminPage() {
             value={testQuery}
             onChange={(e) => setTestQuery(e.target.value)}
             placeholder="Try: 'What is your refund policy?', 'Do you support WhatsApp CRM?', or test unknown pricing..."
-            className="flex-1 bg-[#0a0b0e] border border-zinc-700/80 text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+            className="flex-1 bg-[#0a0b0e] border border-zinc-700/80 text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
           />
           <button
             type="submit"
             disabled={isTesting}
-            className="bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white text-xs px-4 py-2.5 rounded-xl transition duration-150 font-medium shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] disabled:opacity-50"
+            className="bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white text-xs px-4 py-2.5 rounded-xl transition duration-150 font-medium shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] disabled:opacity-50"
           >
             {isTesting ? 'Evaluating...' : 'Test Grounding'}
           </button>
@@ -206,7 +206,7 @@ export default function KnowledgeBaseAdminPage() {
                 <span className="text-[10px] text-zinc-400 font-mono uppercase tracking-wider block mb-1.5">Citations Used:</span>
                 <div className="flex flex-wrap gap-1.5">
                   {testResult.citations.map((c: any, idx: number) => (
-                    <span key={idx} className="bg-[#151724] border border-indigo-500/30 text-indigo-300 px-2.5 py-1 rounded-lg text-[10px] font-mono">
+                    <span key={idx} className="bg-[#151724] border border-orange-500/30 text-orange-300 px-2.5 py-1 rounded-lg text-[10px] font-mono">
                       {c.title}
                     </span>
                   ))}
@@ -221,7 +221,7 @@ export default function KnowledgeBaseAdminPage() {
       <div className="bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] overflow-hidden">
         <div className="px-6 py-4 border-b border-white/[0.08] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Layers className="w-4 h-4 text-indigo-400" />
+            <Layers className="w-4 h-4 text-orange-400" />
             <h2 className="text-sm font-bold text-white">Indexed Business Documentation ({sources.length})</h2>
           </div>
           <span className="text-xs text-zinc-400 font-mono">Auto-chunked and tenant isolated</span>
@@ -244,11 +244,11 @@ export default function KnowledgeBaseAdminPage() {
                 <tr key={src.id} className="hover:bg-white/[0.02] transition duration-150">
                   <td className="px-6 py-4">
                     <div className="font-semibold text-white flex items-center gap-2">
-                      {src.type === 'FAQ' ? <HelpCircle className="w-3.5 h-3.5 text-indigo-400" /> : <FileText className="w-3.5 h-3.5 text-zinc-400" />}
+                      {src.type === 'FAQ' ? <HelpCircle className="w-3.5 h-3.5 text-orange-400" /> : <FileText className="w-3.5 h-3.5 text-zinc-400" />}
                       <span>{src.title}</span>
                     </div>
                     {src.source_url && (
-                      <span className="text-[11px] text-indigo-400 block truncate max-w-xs mt-0.5">{src.source_url}</span>
+                      <span className="text-[11px] text-orange-400 block truncate max-w-xs mt-0.5">{src.source_url}</span>
                     )}
                   </td>
                   <td className="px-6 py-4 font-mono text-zinc-300">{src.chunk_count} chunks</td>
@@ -262,7 +262,7 @@ export default function KnowledgeBaseAdminPage() {
                       onClick={() => handleTogglePublish(src.id, Boolean(src.is_published))}
                       className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full transition duration-150 border ${
                         src.is_published 
-                          ? 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30 hover:bg-indigo-500/30' 
+                          ? 'bg-orange-500/20 text-orange-300 border-orange-500/30 hover:bg-orange-500/30' 
                           : 'bg-zinc-800 text-zinc-400 border-white/[0.08] hover:bg-zinc-700'
                       }`}
                     >
@@ -314,7 +314,7 @@ export default function KnowledgeBaseAdminPage() {
                       onClick={() => setFormType(t)}
                       className={`py-2 rounded-xl border text-center font-semibold transition duration-150 ${
                         formType === t 
-                          ? 'bg-indigo-600 text-white border-indigo-500 shadow-[0_2px_8px_rgba(99,102,241,0.35)]' 
+                          ? 'bg-orange-600 text-white border-orange-500 shadow-[0_2px_8px_rgba(249,115,22,0.35)]' 
                           : 'bg-[#0a0b0e] border-zinc-700/80 text-zinc-400 hover:text-white'
                       }`}
                     >
@@ -332,7 +332,7 @@ export default function KnowledgeBaseAdminPage() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="e.g. Enterprise SLA & Security Compliance Terms"
-                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
                 />
               </div>
 
@@ -345,7 +345,7 @@ export default function KnowledgeBaseAdminPage() {
                     value={sourceUrl}
                     onChange={(e) => setSourceUrl(e.target.value)}
                     placeholder="https://yourcompany.com/approved-docs"
-                    className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600 font-mono text-[11px]"
+                    className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600 font-mono text-[11px]"
                   />
                   <span className="text-[10px] text-zinc-500 mt-1 block">
                     Strict SSRF validation prohibits RFC1918 private subnets and cloud metadata endpoints.
@@ -360,7 +360,7 @@ export default function KnowledgeBaseAdminPage() {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="Paste verified business facts, service details, pricing policies, or FAQs here..."
-                    className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-indigo-500 focus:outline-none font-sans placeholder:text-zinc-600"
+                    className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 focus:ring-1 focus:ring-orange-500 focus:outline-none font-sans placeholder:text-zinc-600"
                   />
                 </div>
               )}
@@ -376,7 +376,7 @@ export default function KnowledgeBaseAdminPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-semibold transition duration-150 shadow-[0_2px_8px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)] disabled:opacity-50"
+                  className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white font-semibold transition duration-150 shadow-[0_2px_8px_rgba(249,115,22,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)] disabled:opacity-50"
                 >
                   {isSubmitting ? 'Validating & Chunking...' : 'Publish & Index'}
                 </button>

@@ -39,7 +39,7 @@ export default function AuditAdminPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20">
               Compliance Ledger
             </span>
           </div>
@@ -54,7 +54,7 @@ export default function AuditAdminPage() {
           disabled={isLoading}
           className="flex items-center space-x-1.5 text-xs bg-zinc-800 hover:bg-zinc-700 active:scale-[0.98] text-zinc-200 px-3.5 py-2.5 rounded-xl border border-white/[0.08] transition duration-150"
         >
-          <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-indigo-400' : ''}`} />
+          <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-orange-400' : ''}`} />
           <span>Refresh Ledger</span>
         </button>
       </div>
@@ -89,7 +89,7 @@ export default function AuditAdminPage() {
                       {log.user_email}
                     </td>
                     <td className="px-6 py-4">
-                      <span className="font-mono font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded text-[11px]">
+                      <span className="font-mono font-bold text-orange-400 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 rounded text-[11px]">
                         {log.action}
                       </span>
                     </td>

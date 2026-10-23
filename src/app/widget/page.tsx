@@ -243,15 +243,15 @@ export default function ChatWidgetPage() {
       <header className="bg-[#12131a] text-white px-4 py-3 flex items-center justify-between border-b border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.4)] shrink-0">
         <div className="flex items-center space-x-3">
           <div className="relative">
-            <div className="w-9 h-9 rounded-xl bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400 font-bold shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]">
-              <Bot className="w-5 h-5 text-indigo-400" />
+            <div className="w-9 h-9 rounded-xl bg-orange-600/20 border border-orange-500/40 flex items-center justify-center text-orange-400 font-bold shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]">
+              <Bot className="w-5 h-5 text-orange-400" />
             </div>
             <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 border-2 border-[#12131a] rounded-full"></span>
           </div>
           <div>
             <div className="flex items-center space-x-2">
               <h1 className="font-semibold text-xs tracking-tight text-zinc-100">SpeakForMe</h1>
-              <span className="bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 text-[9px] font-semibold px-1.5 py-0.2 rounded uppercase tracking-wider">
+              <span className="bg-orange-500/15 text-orange-300 border border-orange-500/30 text-[9px] font-semibold px-1.5 py-0.2 rounded uppercase tracking-wider">
                 Grounded
               </span>
             </div>
@@ -274,7 +274,7 @@ export default function ChatWidgetPage() {
               className="text-[11px] bg-zinc-800 hover:bg-zinc-700 active:scale-[0.96] border border-white/10 text-zinc-200 px-2.5 py-1 rounded-lg flex items-center gap-1.5 transition duration-150 shadow-xs"
               title="Speak with a live human specialist"
             >
-              <User className="w-3 h-3 text-indigo-400" />
+              <User className="w-3 h-3 text-orange-400" />
               <span className="hidden sm:inline">Human Agent</span>
             </button>
           )}
@@ -319,14 +319,14 @@ export default function ChatWidgetPage() {
             <div className="flex items-end gap-2 max-w-[88%]">
               {msg.senderType !== 'VISITOR' && (
                 <div className="w-6 h-6 rounded-lg bg-zinc-800 border border-zinc-700/80 flex items-center justify-center shrink-0 text-zinc-300 text-xs shadow-xs">
-                  {msg.senderType === 'AI' ? <Bot className="w-3.5 h-3.5 text-indigo-400" /> : <User className="w-3.5 h-3.5 text-emerald-400" />}
+                  {msg.senderType === 'AI' ? <Bot className="w-3.5 h-3.5 text-orange-400" /> : <User className="w-3.5 h-3.5 text-emerald-400" />}
                 </div>
               )}
 
               <div
                 className={`rounded-2xl px-4 py-2.5 text-xs leading-relaxed transition shadow-sm ${
                   msg.senderType === 'VISITOR'
-                    ? 'bg-indigo-600 text-white rounded-br-xs shadow-[0_2px_8px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]'
+                    ? 'bg-orange-600 text-white rounded-br-xs shadow-[0_2px_8px_rgba(249,115,22,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]'
                     : msg.senderType === 'SYSTEM'
                     ? 'bg-zinc-900 border border-amber-500/30 text-amber-200 rounded-xl w-full text-[11px]'
                     : 'bg-[#15171e] border border-white/[0.08] text-zinc-200 rounded-bl-xs shadow-[0_2px_6px_rgba(0,0,0,0.25)]'
@@ -349,7 +349,7 @@ export default function ChatWidgetPage() {
                         className="inline-flex items-center gap-1 bg-zinc-800/80 border border-zinc-700/60 text-zinc-300 text-[10px] px-2 py-0.5 rounded-full font-mono"
                         title={c.snippet}
                       >
-                        <Shield className="w-2.5 h-2.5 text-indigo-400" />
+                        <Shield className="w-2.5 h-2.5 text-orange-400" />
                         {c.title}
                       </span>
                     ))}
@@ -362,11 +362,11 @@ export default function ChatWidgetPage() {
                     {msg.recommendedItems.map((item) => (
                       <div
                         key={item.id}
-                        className="bg-[#1b1d26] border border-white/[0.08] rounded-xl p-3 text-xs space-y-1.5 hover:border-indigo-500/40 transition duration-150"
+                        className="bg-[#1b1d26] border border-white/[0.08] rounded-xl p-3 text-xs space-y-1.5 hover:border-orange-500/40 transition duration-150"
                       >
                         <div className="flex items-center justify-between font-semibold text-zinc-100">
                           <span>{item.name}</span>
-                          <span className="text-indigo-400 font-bold font-mono">{item.priceDisplay}</span>
+                          <span className="text-orange-400 font-bold font-mono">{item.priceDisplay}</span>
                         </div>
                         <p className="text-zinc-400 text-[11px] leading-relaxed">{item.description}</p>
                         <ul className="text-zinc-400 text-[11px] list-disc list-inside space-y-0.5">
@@ -379,7 +379,7 @@ export default function ChatWidgetPage() {
                             setLeadForm((prev) => ({ ...prev, serviceInterest: item.name }));
                             setShowLeadModal(true);
                           }}
-                          className="w-full mt-1 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-medium py-1.5 px-2 rounded-lg flex items-center justify-center gap-1 transition duration-150 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] text-[11px]"
+                          className="w-full mt-1 bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white font-medium py-1.5 px-2 rounded-lg flex items-center justify-center gap-1 transition duration-150 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] text-[11px]"
                         >
                           Request Quotation for {item.name}
                           <ChevronRight className="w-3.5 h-3.5" />
@@ -400,7 +400,7 @@ export default function ChatWidgetPage() {
         {isLoading && (
           <div className="flex items-center space-x-2 text-zinc-400 text-xs py-2">
             <div className="w-5 h-5 rounded-lg bg-zinc-800 flex items-center justify-center animate-pulse">
-              <Bot className="w-3 h-3 text-indigo-400" />
+              <Bot className="w-3 h-3 text-orange-400" />
             </div>
             <span className="italic text-[11px]">Verifying approved business knowledge...</span>
           </div>
@@ -413,7 +413,7 @@ export default function ChatWidgetPage() {
       {messages.length <= 2 && (
         <div className="px-4 py-2.5 bg-[#101116] border-t border-white/[0.06] shrink-0">
           <div className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mb-1.5 flex items-center gap-1">
-            <Sparkles className="w-3 h-3 text-indigo-400" /> Suggested Inquiries:
+            <Sparkles className="w-3 h-3 text-orange-400" /> Suggested Inquiries:
           </div>
           <div className="flex flex-wrap gap-1.5">
             {suggestedChips.map((chip, idx) => (
@@ -443,13 +443,13 @@ export default function ChatWidgetPage() {
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             placeholder={status === 'HUMAN_ACTIVE' ? 'Type your message to human specialist...' : 'Ask about services, pricing, SLA, or WhatsApp sync...'}
-            className="flex-1 bg-[#0a0b0e] border border-white/[0.1] text-zinc-100 text-xs rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 placeholder-zinc-500 transition duration-150"
+            className="flex-1 bg-[#0a0b0e] border border-white/[0.1] text-zinc-100 text-xs rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 placeholder-zinc-500 transition duration-150"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={!inputText.trim() || isLoading}
-            className="bg-indigo-600 hover:bg-indigo-500 active:scale-[0.95] disabled:opacity-40 text-white p-2.5 rounded-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] transition duration-150 flex items-center justify-center"
+            className="bg-orange-600 hover:bg-orange-500 active:scale-[0.95] disabled:opacity-40 text-white p-2.5 rounded-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] transition duration-150 flex items-center justify-center"
             aria-label="Send message"
           >
             <Send className="w-3.5 h-3.5" />
@@ -467,7 +467,7 @@ export default function ChatWidgetPage() {
       {showLeadModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 z-50">
           <div className="bg-[#14151e] rounded-2xl shadow-2xl border border-white/10 w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-150">
-            <div className="bg-indigo-600 px-4 py-3 flex items-center justify-between text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)]">
+            <div className="bg-orange-600 px-4 py-3 flex items-center justify-between text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)]">
               <div className="flex items-center space-x-2">
                 <Building2 className="w-4 h-4 text-white" />
                 <h3 className="font-semibold text-xs tracking-tight">Priority Consultation & Quote</h3>
@@ -489,7 +489,7 @@ export default function ChatWidgetPage() {
                   value={leadForm.name}
                   onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
                   placeholder="e.g. Sarah Connor"
-                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-orange-500 focus:outline-none"
                 />
               </div>
 
@@ -501,7 +501,7 @@ export default function ChatWidgetPage() {
                   value={leadForm.email}
                   onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
                   placeholder="sarah@company.com"
-                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-orange-500 focus:outline-none"
                 />
               </div>
 
@@ -512,7 +512,7 @@ export default function ChatWidgetPage() {
                   value={leadForm.phone}
                   onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
                   placeholder="+1 (555) 019-2834"
-                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-orange-500 focus:outline-none"
                 />
               </div>
 
@@ -523,7 +523,7 @@ export default function ChatWidgetPage() {
                   value={leadForm.company}
                   onChange={(e) => setLeadForm({ ...leadForm, company: e.target.value })}
                   placeholder="Cyberdyne Systems"
-                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-orange-500 focus:outline-none"
                 />
               </div>
 
@@ -532,7 +532,7 @@ export default function ChatWidgetPage() {
                 <select
                   value={leadForm.serviceInterest}
                   onChange={(e) => setLeadForm({ ...leadForm, serviceInterest: e.target.value })}
-                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-orange-500 focus:outline-none"
                 >
                   <option value="Growth Conversational AI Package">Growth Package ($499/mo)</option>
                   <option value="Professional Omnichannel & CRM Suite">Professional Suite ($1,299/mo)</option>
@@ -547,7 +547,7 @@ export default function ChatWidgetPage() {
                   required
                   checked={leadForm.consentGiven}
                   onChange={(e) => setLeadForm({ ...leadForm, consentGiven: e.target.checked })}
-                  className="mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 bg-[#0a0b0e] border-zinc-700"
+                  className="mt-0.5 rounded text-orange-600 focus:ring-orange-500 bg-[#0a0b0e] border-zinc-700"
                 />
                 <label htmlFor="consent" className="text-[11px] text-zinc-400 leading-tight">
                   I agree to receive communications regarding this inquiry. You can opt out at any time.
@@ -557,7 +557,7 @@ export default function ChatWidgetPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-medium py-2 rounded-lg transition duration-150 mt-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]"
+                className="w-full bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white font-medium py-2 rounded-lg transition duration-150 mt-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]"
               >
                 {isLoading ? 'Submitting & Qualifying...' : 'Submit & Connect with Specialist'}
               </button>

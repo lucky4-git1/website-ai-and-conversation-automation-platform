@@ -48,7 +48,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background: #6366f1;
+  background: #f97316;
 }
 
 /* Modal and panel subtle scrollbars */
@@ -61,5 +61,5 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #6366f1;
+  background: #f97316;
 }

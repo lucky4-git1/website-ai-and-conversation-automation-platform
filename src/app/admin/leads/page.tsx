@@ -111,7 +111,7 @@ export default function LeadsAdminPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20">
               Visitor Conversion Engine
             </span>
           </div>
@@ -126,7 +126,7 @@ export default function LeadsAdminPage() {
           disabled={isLoading}
           className="flex items-center space-x-1.5 text-xs bg-zinc-800 hover:bg-zinc-700 active:scale-[0.98] text-zinc-200 px-3.5 py-2.5 rounded-xl border border-white/[0.08] transition duration-150"
         >
-          <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-indigo-400' : ''}`} />
+          <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-orange-400' : ''}`} />
           <span>Refresh Leads</span>
         </button>
       </div>
@@ -141,10 +141,10 @@ export default function LeadsAdminPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by name, email, or company..."
-              className="w-full pl-9 pr-3 py-2 bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500 placeholder:text-zinc-600"
+              className="w-full pl-9 pr-3 py-2 bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-orange-500 placeholder:text-zinc-600"
             />
           </div>
-          <button type="submit" className="bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white text-xs px-4 py-2 rounded-xl transition duration-150 font-medium shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]">
+          <button type="submit" className="bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white text-xs px-4 py-2 rounded-xl transition duration-150 font-medium shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]">
             Search
           </button>
         </form>
@@ -158,7 +158,7 @@ export default function LeadsAdminPage() {
               onClick={() => setQualificationFilter(st)}
               className={`text-xs px-2.5 py-1 rounded-lg font-medium transition duration-150 border ${
                 qualificationFilter === st
-                  ? 'bg-indigo-600 text-white border-indigo-500 shadow-[0_2px_8px_rgba(99,102,241,0.35)]'
+                  ? 'bg-orange-600 text-white border-orange-500 shadow-[0_2px_8px_rgba(249,115,22,0.35)]'
                   : 'bg-[#0a0b0e] border-zinc-700/80 text-zinc-400 hover:text-white hover:bg-zinc-800'
               }`}
             >
@@ -205,7 +205,7 @@ export default function LeadsAdminPage() {
                     <td className="px-6 py-4 text-center">
                       <span className={`inline-block font-mono font-bold text-xs px-2.5 py-0.5 rounded-full border ${
                         lead.score >= 60 
-                          ? 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30' 
+                          ? 'bg-orange-500/20 text-orange-300 border-orange-500/30' 
                           : 'bg-zinc-800 text-zinc-400 border-white/[0.08]'
                       }`}>
                         {lead.score}/100
@@ -276,13 +276,13 @@ export default function LeadsAdminPage() {
               )}
 
               {/* Explainable Lead Score Card */}
-              <div className="bg-[#151724] border border-indigo-500/30 rounded-xl p-5 space-y-3 shadow-[0_2px_12px_rgba(99,102,241,0.15)]">
+              <div className="bg-[#151724] border border-orange-500/30 rounded-xl p-5 space-y-3 shadow-[0_2px_12px_rgba(249,115,22,0.15)]">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <TrendingUp className="w-4 h-4 text-indigo-400" />
+                    <TrendingUp className="w-4 h-4 text-orange-400" />
                     <span className="font-bold text-white">Explainable Intent Score</span>
                   </div>
-                  <span className="font-mono text-base font-black text-indigo-400">
+                  <span className="font-mono text-base font-black text-orange-400">
                     {leadDetail.lead?.score} / 100
                   </span>
                 </div>
@@ -292,7 +292,7 @@ export default function LeadsAdminPage() {
                   <ul className="space-y-1 text-zinc-300">
                     {leadDetail.lead?.scoreBreakdown?.reasons?.map((r: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-orange-400 shrink-0 mt-0.5" />
                         <span>{r}</span>
                       </li>
                     ))}
@@ -345,7 +345,7 @@ export default function LeadsAdminPage() {
                 <div className="border-l border-zinc-700 ml-2 space-y-3 pl-3.5">
                   {leadDetail.activities?.map((act: any) => (
                     <div key={act.id} className="relative">
-                      <div className="w-2 h-2 rounded-full bg-indigo-500 absolute -left-[18px] top-1"></div>
+                      <div className="w-2 h-2 rounded-full bg-orange-500 absolute -left-[18px] top-1"></div>
                       <span className="text-[10px] text-zinc-500 font-mono block">
                         {new Date(act.created_at).toLocaleString()} • {act.activity_type}
                       </span>

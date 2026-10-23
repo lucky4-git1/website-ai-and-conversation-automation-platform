@@ -53,7 +53,7 @@ export default function FormsAdminPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20">
               Lead Generation
             </span>
           </div>
@@ -67,7 +67,7 @@ export default function FormsAdminPage() {
       {/* Conversion Journey Lifecycle Architecture */}
       <div className="bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] p-6 space-y-4">
         <div className="flex items-center space-x-2">
-          <Sparkles className="w-4 h-4 text-indigo-400" />
+          <Sparkles className="w-4 h-4 text-orange-400" />
           <h2 className="text-sm font-bold text-white">Standard Conversion Journey Lifecycle</h2>
         </div>
 
@@ -79,7 +79,7 @@ export default function FormsAdminPage() {
                 <p className="text-zinc-400 text-[11px] leading-relaxed">{step.description}</p>
               </div>
               {idx < 4 && (
-                <div className="hidden md:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 text-indigo-400 text-xs font-bold">
+                <div className="hidden md:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 text-orange-400 text-xs font-bold">
                   ▶
                 </div>
               )}
@@ -104,7 +104,7 @@ export default function FormsAdminPage() {
                 onClick={() => setSelectedForm(f)}
                 className={`p-4 rounded-xl border cursor-pointer transition duration-150 text-xs space-y-2 ${
                   selectedForm?.id === f.id
-                    ? 'border-indigo-500 bg-[#151724] shadow-[0_2px_10px_rgba(99,102,241,0.25)]'
+                    ? 'border-orange-500 bg-[#151724] shadow-[0_2px_10px_rgba(249,115,22,0.25)]'
                     : 'border-white/[0.06] hover:border-white/[0.15] bg-[#0a0b0e]'
                 }`}
               >
@@ -132,7 +132,7 @@ export default function FormsAdminPage() {
                   <h3 className="font-bold text-sm text-white">{selectedForm.name}</h3>
                   <span className="text-xs text-zinc-400 font-mono">Endpoint: /api/v1/forms/{selectedForm.slug}/submit</span>
                 </div>
-                <span className="bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[10px] font-semibold px-2.5 py-0.5 rounded-full font-mono">
+                <span className="bg-orange-500/20 text-orange-300 border border-orange-500/30 text-[10px] font-semibold px-2.5 py-0.5 rounded-full font-mono">
                   Server-Validated
                 </span>
               </div>

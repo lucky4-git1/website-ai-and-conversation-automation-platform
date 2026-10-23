@@ -106,7 +106,7 @@ export default function CRMAdminPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20">
               Enterprise Bi-Directional Sync
             </span>
           </div>
@@ -129,7 +129,7 @@ export default function CRMAdminPage() {
       </div>
 
       {feedback && (
-        <div className="p-4 rounded-xl bg-[#151724] text-white text-xs border border-indigo-500/30 flex items-center justify-between shadow-[0_2px_12px_rgba(99,102,241,0.15)]">
+        <div className="p-4 rounded-xl bg-[#151724] text-white text-xs border border-orange-500/30 flex items-center justify-between shadow-[0_2px_12px_rgba(249,115,22,0.15)]">
           <span>{feedback}</span>
           <button onClick={() => setFeedback(null)} className="text-zinc-400 hover:text-white p-1">✕</button>
         </div>
@@ -140,7 +140,7 @@ export default function CRMAdminPage() {
         {/* Configuration Form (7 cols) */}
         <div className="lg:col-span-7 bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] p-6 space-y-4">
           <div className="flex items-center space-x-2.5 border-b border-white/[0.08] pb-3">
-            <Key className="w-4 h-4 text-indigo-400" />
+            <Key className="w-4 h-4 text-orange-400" />
             <h3 className="font-bold text-sm text-white">HubSpot Private App Credentials</h3>
           </div>
 
@@ -152,7 +152,7 @@ export default function CRMAdminPage() {
                 value={portalId}
                 onChange={(e) => setPortalId(e.target.value)}
                 placeholder="e.g. 24891024"
-                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
               />
             </div>
 
@@ -163,7 +163,7 @@ export default function CRMAdminPage() {
                 value={accessToken}
                 onChange={(e) => setAccessToken(e.target.value)}
                 placeholder="Paste HubSpot Private App Token (pat-...)"
-                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
               />
               <span className="text-[10px] text-zinc-500 mt-1 block">
                 Acquire from HubSpot Settings &gt; Integrations &gt; Private Apps. Required scopes: <code>crm.objects.contacts.write</code>, <code>crm.objects.deals.write</code>.
@@ -177,7 +177,7 @@ export default function CRMAdminPage() {
                 value={webhookUrl}
                 onChange={(e) => setWebhookUrl(e.target.value)}
                 placeholder="https://hooks.zapier.com/hooks/catch/..."
-                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-indigo-500 focus:outline-none placeholder:text-zinc-600"
+                className="w-full bg-[#0a0b0e] border border-zinc-700/80 text-white rounded-xl p-2.5 font-mono focus:ring-1 focus:ring-orange-500 focus:outline-none placeholder:text-zinc-600"
               />
             </div>
 
@@ -194,7 +194,7 @@ export default function CRMAdminPage() {
               <button
                 type="submit"
                 disabled={isSaving}
-                className="flex-1 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-semibold py-2.5 rounded-xl transition duration-150 shadow-[0_2px_8px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]"
+                className="flex-1 bg-orange-600 hover:bg-orange-500 active:scale-[0.98] text-white font-semibold py-2.5 rounded-xl transition duration-150 shadow-[0_2px_8px_rgba(249,115,22,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]"
               >
                 {isSaving ? 'Saving...' : 'Save Configuration'}
               </button>
@@ -214,27 +214,27 @@ export default function CRMAdminPage() {
               <div className="flex items-center justify-between p-2.5 bg-[#0a0b0e] rounded-xl border border-white/[0.06]">
                 <span className="text-zinc-400">lead.name</span>
                 <span className="text-zinc-600">→</span>
-                <span className="text-indigo-400 font-bold">firstname</span>
+                <span className="text-orange-400 font-bold">firstname</span>
               </div>
               <div className="flex items-center justify-between p-2.5 bg-[#0a0b0e] rounded-xl border border-white/[0.06]">
                 <span className="text-zinc-400">lead.email</span>
                 <span className="text-zinc-600">→</span>
-                <span className="text-indigo-400 font-bold">email (unique key)</span>
+                <span className="text-orange-400 font-bold">email (unique key)</span>
               </div>
               <div className="flex items-center justify-between p-2.5 bg-[#0a0b0e] rounded-xl border border-white/[0.06]">
                 <span className="text-zinc-400">lead.company</span>
                 <span className="text-zinc-600">→</span>
-                <span className="text-indigo-400 font-bold">company</span>
+                <span className="text-orange-400 font-bold">company</span>
               </div>
               <div className="flex items-center justify-between p-2.5 bg-[#0a0b0e] rounded-xl border border-white/[0.06]">
                 <span className="text-zinc-400">lead.score</span>
                 <span className="text-zinc-600">→</span>
-                <span className="text-indigo-400 font-bold">lead_score</span>
+                <span className="text-orange-400 font-bold">lead_score</span>
               </div>
               <div className="flex items-center justify-between p-2.5 bg-[#0a0b0e] rounded-xl border border-white/[0.06]">
                 <span className="text-zinc-400">lead.service_interest</span>
                 <span className="text-zinc-600">→</span>
-                <span className="text-indigo-400 font-bold">service_interest</span>
+                <span className="text-orange-400 font-bold">service_interest</span>
               </div>
             </div>
           </div>
