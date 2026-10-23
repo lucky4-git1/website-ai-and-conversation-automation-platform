@@ -10,7 +10,8 @@ import {
   Users,
   Settings,
   Workflow,
-  Sparkles
+  Sparkles,
+  Layers
 } from 'lucide-react';
 
 export default function FormsAdminPage() {
@@ -49,31 +50,36 @@ export default function FormsAdminPage() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-xl border border-slate-200 shadow-2xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#12131c] p-6 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
         <div>
-          <h1 className="text-xl font-bold text-slate-900 tracking-tight">Conversion Forms & Multistep Journeys</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+              Lead Generation
+            </span>
+          </div>
+          <h1 className="text-xl font-bold text-white tracking-tight">Conversion Forms & Multistep Journeys</h1>
+          <p className="text-xs text-zinc-400 mt-1">
             Configurable conversion flows with server-side validation and progressive lead attribution.
           </p>
         </div>
       </div>
 
       {/* Conversion Journey Lifecycle Architecture */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
+      <div className="bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] p-6 space-y-4">
         <div className="flex items-center space-x-2">
-          <Sparkles className="w-4 h-4 text-sky-600" />
-          <h2 className="text-sm font-bold text-slate-900">Standard Conversion Journey Lifecycle</h2>
+          <Sparkles className="w-4 h-4 text-indigo-400" />
+          <h2 className="text-sm font-bold text-white">Standard Conversion Journey Lifecycle</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
           {journeySteps.map((step, idx) => (
-            <div key={step.id} className="bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs relative flex flex-col justify-between">
+            <div key={step.id} className="bg-[#0a0b0e] border border-white/[0.08] rounded-xl p-4 text-xs relative flex flex-col justify-between">
               <div>
-                <span className="font-bold text-slate-900 block mb-1">{step.name}</span>
-                <p className="text-slate-600 text-[11px] leading-relaxed">{step.description}</p>
+                <span className="font-bold text-white block mb-1 font-mono text-[11px]">{step.name}</span>
+                <p className="text-zinc-400 text-[11px] leading-relaxed">{step.description}</p>
               </div>
               {idx < 4 && (
-                <div className="hidden md:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 text-slate-400">
+                <div className="hidden md:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 text-indigo-400 text-xs font-bold">
                   ▶
                 </div>
               )}
@@ -85,10 +91,10 @@ export default function FormsAdminPage() {
       {/* Forms Table & Form Detail Grid */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         {/* Form List (5 cols) */}
-        <div className="md:col-span-5 bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h3 className="text-sm font-bold text-slate-900">Active Conversion Forms</h3>
-            <span className="text-xs text-slate-400 font-mono">{forms.length} Defined</span>
+        <div className="md:col-span-5 bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] p-6 space-y-4">
+          <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
+            <h3 className="text-sm font-bold text-white">Active Conversion Forms</h3>
+            <span className="text-xs text-zinc-500 font-mono">{forms.length} Defined</span>
           </div>
 
           <div className="space-y-3">
@@ -96,20 +102,20 @@ export default function FormsAdminPage() {
               <div
                 key={f.id}
                 onClick={() => setSelectedForm(f)}
-                className={`p-3.5 rounded-xl border cursor-pointer transition text-xs space-y-1.5 ${
+                className={`p-4 rounded-xl border cursor-pointer transition duration-150 text-xs space-y-2 ${
                   selectedForm?.id === f.id
-                    ? 'border-sky-500 bg-sky-50/50 shadow-2xs'
-                    : 'border-slate-200 hover:border-slate-300 bg-white'
+                    ? 'border-indigo-500 bg-[#151724] shadow-[0_2px_10px_rgba(99,102,241,0.25)]'
+                    : 'border-white/[0.06] hover:border-white/[0.15] bg-[#0a0b0e]'
                 }`}
               >
-                <div className="flex items-center justify-between font-bold text-slate-900">
+                <div className="flex items-center justify-between font-bold text-white">
                   <span>{f.name}</span>
-                  <span className="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded-full font-semibold">
+                  <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] px-2 py-0.5 rounded-full font-mono">
                     {f.submission_count || 0} Submissions
                   </span>
                 </div>
-                <p className="text-slate-500 text-[11px]">{f.description}</p>
-                <div className="text-[10px] text-slate-400 font-mono">
+                <p className="text-zinc-400 text-[11px] leading-relaxed">{f.description}</p>
+                <div className="text-[10px] text-zinc-500 font-mono">
                   Slug: /{f.slug} • {f.fields?.length || 0} Fields
                 </div>
               </div>
@@ -118,35 +124,35 @@ export default function FormsAdminPage() {
         </div>
 
         {/* Selected Form Preview & Field Schema (7 cols) */}
-        <div className="md:col-span-7 bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
+        <div className="md:col-span-7 bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] p-6 space-y-4">
           {selectedForm ? (
             <>
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
                 <div>
-                  <h3 className="font-bold text-sm text-slate-900">{selectedForm.name}</h3>
-                  <span className="text-xs text-slate-500">API Endpoint: /api/v1/forms/{selectedForm.slug}/submit</span>
+                  <h3 className="font-bold text-sm text-white">{selectedForm.name}</h3>
+                  <span className="text-xs text-zinc-400 font-mono">Endpoint: /api/v1/forms/{selectedForm.slug}/submit</span>
                 </div>
-                <span className="bg-sky-100 text-sky-800 text-[10px] font-semibold px-2 py-0.5 rounded-full">
+                <span className="bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[10px] font-semibold px-2.5 py-0.5 rounded-full font-mono">
                   Server-Validated
                 </span>
               </div>
 
-              <div className="space-y-2">
-                <span className="text-xs font-semibold text-slate-700 block">Configured Form Fields:</span>
+              <div className="space-y-2.5">
+                <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 block">Configured Form Fields:</span>
                 <div className="space-y-2">
                   {selectedForm.fields?.map((field: any) => (
-                    <div key={field.id} className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs flex items-center justify-between">
+                    <div key={field.id} className="p-3.5 bg-[#0a0b0e] border border-white/[0.06] rounded-xl text-xs flex items-center justify-between">
                       <div>
-                        <span className="font-bold text-slate-800 mr-2">{field.label}</span>
+                        <span className="font-bold text-white mr-2">{field.label}</span>
                         {field.required && (
-                          <span className="text-rose-600 font-bold text-[10px]">*Required</span>
+                          <span className="text-rose-400 font-mono text-[10px]">*Required</span>
                         )}
-                        <span className="text-slate-400 text-[11px] block mt-0.5 font-mono">
+                        <span className="text-zinc-500 text-[11px] block mt-0.5 font-mono">
                           ID: {field.id} • Type: {field.type}
                         </span>
                       </div>
                       {field.options && (
-                        <div className="text-right text-[10px] text-slate-500">
+                        <div className="text-right text-[10px] text-zinc-500 font-mono">
                           {field.options.length} options
                         </div>
                       )}
@@ -155,13 +161,13 @@ export default function FormsAdminPage() {
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 bg-slate-50 p-3 rounded-lg text-xs space-y-1">
-                <span className="font-semibold text-slate-800 block">Form Confirmation Settings:</span>
-                <p className="text-slate-600">{selectedForm.settings?.successMessage}</p>
+              <div className="pt-3 border-t border-white/[0.08] bg-[#0a0b0e] p-4 rounded-xl text-xs space-y-1">
+                <span className="font-mono uppercase tracking-wider text-zinc-400 text-[10px] block">Form Confirmation Settings:</span>
+                <p className="text-zinc-300 text-xs leading-relaxed">{selectedForm.settings?.successMessage}</p>
               </div>
             </>
           ) : (
-            <div className="p-8 text-center text-slate-400 text-xs">
+            <div className="p-12 text-center text-zinc-500 text-xs font-mono">
               Select a form to inspect its schema and settings.
             </div>
           )}
