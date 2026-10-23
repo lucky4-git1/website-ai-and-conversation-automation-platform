@@ -137,18 +137,18 @@ function ConversationsAdminContent() {
   return (
     <div className="h-[calc(100vh-6rem)] flex flex-col space-y-4 max-w-7xl mx-auto">
       {/* Top Filter Bar */}
-      <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs flex flex-wrap items-center justify-between gap-3 shrink-0">
+      <div className="bg-[#12131c] p-3 rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] flex flex-wrap items-center justify-between gap-3 shrink-0">
         <div className="flex items-center space-x-2">
-          <Filter className="w-4 h-4 text-slate-400" />
-          <span className="text-xs font-semibold text-slate-700">Filter Status:</span>
+          <Filter className="w-4 h-4 text-zinc-500" />
+          <span className="text-xs font-semibold text-zinc-300 font-mono">Filter Status:</span>
           {['ALL', 'HANDOFF_REQUESTED', 'HUMAN_ACTIVE', 'AI_ACTIVE', 'RESOLVED'].map((st) => (
             <button
               key={st}
               onClick={() => setStatusFilter(st)}
-              className={`text-xs px-2.5 py-1 rounded-md font-medium transition ${
+              className={`text-xs px-2.5 py-1 rounded-xl font-medium transition duration-150 ${
                 statusFilter === st
-                  ? 'bg-sky-600 text-white'
-                  : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                  ? 'bg-indigo-600 text-white shadow-[0_2px_8px_rgba(99,102,241,0.35)]'
+                  : 'bg-zinc-850 hover:bg-zinc-800 text-zinc-400 border border-white/[0.04]'
               }`}
             >
               {st.replace('_', ' ')}
@@ -161,25 +161,25 @@ function ConversationsAdminContent() {
             fetchConversations();
             if (selectedConvId) fetchConversationDetail(selectedConvId);
           }}
-          className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1.5 rounded-lg border border-slate-200 flex items-center gap-1.5 transition"
+          className="text-xs bg-zinc-800 hover:bg-zinc-700 active:scale-[0.97] text-zinc-200 px-3 py-1.5 rounded-xl border border-white/[0.08] flex items-center gap-1.5 transition duration-150"
         >
-          <RefreshCw className="w-3.5 h-3.5 text-slate-500" />
+          <RefreshCw className="w-3.5 h-3.5 text-zinc-400" />
           <span>Refresh Inbox</span>
         </button>
       </div>
 
-      {/* Main Conversation Workspace: 2-Column or 3-Column layout */}
+      {/* Main Conversation Workspace: 2-Column layout */}
       <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-4 min-h-0">
         {/* Left List of Conversations (4 cols) */}
-        <div className="md:col-span-4 bg-white rounded-xl border border-slate-200 shadow-2xs flex flex-col min-h-0 overflow-hidden">
-          <div className="p-3 border-b border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 flex items-center justify-between shrink-0">
+        <div className="md:col-span-4 bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] flex flex-col min-h-0 overflow-hidden">
+          <div className="p-3 border-b border-white/[0.06] bg-[#0c0d12] text-xs font-semibold text-zinc-300 flex items-center justify-between shrink-0 font-mono">
             <span>Conversations ({conversations.length})</span>
-            <span className="text-[11px] text-slate-400">Real-time Stream</span>
+            <span className="text-[10px] text-zinc-500">Live Socket</span>
           </div>
 
-          <div className="flex-1 overflow-y-auto divide-y divide-slate-100">
+          <div className="flex-1 overflow-y-auto divide-y divide-white/[0.04]">
             {conversations.length === 0 ? (
-              <div className="p-6 text-center text-slate-400 text-xs">
+              <div className="p-6 text-center text-zinc-500 text-xs">
                 No conversations found in this category.
               </div>
             ) : (
@@ -187,34 +187,34 @@ function ConversationsAdminContent() {
                 <div
                   key={conv.id}
                   onClick={() => setSelectedConvId(conv.id)}
-                  className={`p-3.5 cursor-pointer transition text-xs ${
+                  className={`p-3.5 cursor-pointer transition duration-150 text-xs ${
                     selectedConvId === conv.id
-                      ? 'bg-sky-50/80 border-l-4 border-sky-600'
-                      : 'hover:bg-slate-50'
+                      ? 'bg-indigo-950/40 border-l-2 border-indigo-500'
+                      : 'hover:bg-white/[0.02]'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-semibold text-slate-900 truncate">
+                    <span className="font-semibold text-white truncate">
                       {conv.lead_name || `Visitor (${conv.visitor_id.substring(0, 8)})`}
                     </span>
-                    <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full ${
+                    <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${
                       conv.status === 'HANDOFF_REQUESTED'
-                        ? 'bg-amber-100 text-amber-800 animate-pulse'
+                        ? 'bg-amber-500/20 text-amber-300 border-amber-500/30 animate-pulse'
                         : conv.status === 'HUMAN_ACTIVE'
-                        ? 'bg-emerald-100 text-emerald-800'
+                        ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
                         : conv.status === 'RESOLVED'
-                        ? 'bg-slate-100 text-slate-500'
-                        : 'bg-sky-100 text-sky-800'
+                        ? 'bg-zinc-800 text-zinc-500 border-zinc-700'
+                        : 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30'
                     }`}>
                       {conv.status.replace('_', ' ')}
                     </span>
                   </div>
 
-                  <p className="text-slate-500 line-clamp-1 italic text-[11px] mb-1">
+                  <p className="text-zinc-400 line-clamp-1 italic text-[11px] mb-1">
                     {conv.latest_message || 'Session initialized'}
                   </p>
 
-                  <div className="flex items-center justify-between text-[10px] text-slate-400">
+                  <div className="flex items-center justify-between text-[10px] text-zinc-500 font-mono">
                     <span>Channel: {conv.channel}</span>
                     <span>{new Date(conv.updated_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                   </div>
@@ -225,25 +225,25 @@ function ConversationsAdminContent() {
         </div>
 
         {/* Right Active Conversation & Details (8 cols) */}
-        <div className="md:col-span-8 bg-white rounded-xl border border-slate-200 shadow-2xs flex flex-col min-h-0 overflow-hidden">
+        <div className="md:col-span-8 bg-[#12131c] rounded-2xl border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] flex flex-col min-h-0 overflow-hidden">
           {selectedConvData ? (
             <>
               {/* Conversation Top Header */}
-              <div className="px-5 py-3.5 border-b border-slate-200 bg-slate-50 flex items-center justify-between shrink-0">
+              <div className="px-5 py-3.5 border-b border-white/[0.06] bg-[#0c0d12] flex items-center justify-between shrink-0">
                 <div>
                   <div className="flex items-center space-x-2">
-                    <h3 className="font-bold text-sm text-slate-900">
+                    <h3 className="font-bold text-sm text-white">
                       {selectedConvData.conversation?.lead_name || 'Anonymous Visitor'}
                     </h3>
-                    <span className="text-xs text-slate-400 font-mono">
+                    <span className="text-xs text-zinc-500 font-mono">
                       ({selectedConvData.conversation?.visitor_id})
                     </span>
                   </div>
-                  <div className="text-[11px] text-slate-500 mt-0.5 flex items-center gap-3">
-                    <span>Status: <strong className="text-slate-800">{selectedConvData.conversation?.status}</strong></span>
-                    <span>Assigned: <strong className="text-slate-800">{selectedConvData.conversation?.assigned_agent_name || 'Unassigned'}</strong></span>
+                  <div className="text-[11px] text-zinc-400 mt-0.5 flex items-center gap-3 font-mono">
+                    <span>Status: <strong className="text-zinc-200">{selectedConvData.conversation?.status}</strong></span>
+                    <span>Assigned: <strong className="text-zinc-200">{selectedConvData.conversation?.assigned_agent_name || 'Unassigned'}</strong></span>
                     {selectedConvData.conversation?.handoff_reason && (
-                      <span className="text-amber-700">Reason: {selectedConvData.conversation?.handoff_reason}</span>
+                      <span className="text-amber-400">Reason: {selectedConvData.conversation?.handoff_reason}</span>
                     )}
                   </div>
                 </div>
@@ -252,7 +252,7 @@ function ConversationsAdminContent() {
                   {selectedConvData.conversation?.status !== 'HUMAN_ACTIVE' && selectedConvData.conversation?.status !== 'RESOLVED' && (
                     <button
                       onClick={handleAssignToMe}
-                      className="text-xs bg-sky-600 hover:bg-sky-700 text-white font-medium px-3 py-1.5 rounded-lg transition shadow-2xs"
+                      className="text-xs bg-indigo-600 hover:bg-indigo-500 active:scale-[0.97] text-white font-medium px-3.5 py-1.5 rounded-xl transition duration-150 shadow-[0_2px_8px_rgba(99,102,241,0.3)]"
                     >
                       Assign to Me
                     </button>
@@ -260,7 +260,7 @@ function ConversationsAdminContent() {
                   {selectedConvData.conversation?.status !== 'RESOLVED' && (
                     <button
                       onClick={handleResolve}
-                      className="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-3 py-1.5 rounded-lg border border-slate-200 transition"
+                      className="text-xs bg-zinc-800 hover:bg-zinc-700 active:scale-[0.97] text-zinc-200 font-medium px-3.5 py-1.5 rounded-xl border border-white/[0.08] transition duration-150"
                     >
                       Mark Resolved
                     </button>
@@ -269,7 +269,7 @@ function ConversationsAdminContent() {
               </div>
 
               {/* Message Transcript */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-50/30">
+              <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-[#0a0b0e]">
                 {selectedConvData.messages?.map((msg: any) => (
                   <div
                     key={msg.id}
@@ -285,32 +285,32 @@ function ConversationsAdminContent() {
                   >
                     <div className="flex items-end gap-2 max-w-[85%]">
                       {msg.senderType !== 'AGENT' && msg.senderType !== 'SYSTEM' && (
-                        <div className="w-6 h-6 rounded-full bg-sky-100 border border-sky-300 flex items-center justify-center shrink-0 text-sky-700 text-xs">
-                          {msg.senderType === 'AI' ? <Bot className="w-3.5 h-3.5" /> : <User className="w-3.5 h-3.5" />}
+                        <div className="w-6 h-6 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center shrink-0 text-zinc-300 text-xs shadow-xs">
+                          {msg.senderType === 'AI' ? <Bot className="w-3.5 h-3.5 text-indigo-400" /> : <User className="w-3.5 h-3.5 text-emerald-400" />}
                         </div>
                       )}
 
                       <div
-                        className={`rounded-xl px-4 py-2.5 text-xs leading-relaxed shadow-2xs ${
+                        className={`rounded-2xl px-4 py-2.5 text-xs leading-relaxed shadow-sm ${
                           msg.senderType === 'VISITOR'
-                            ? 'bg-white border border-slate-200 text-slate-800'
+                            ? 'bg-[#181a24] border border-white/[0.08] text-zinc-100'
                             : msg.senderType === 'AGENT'
-                            ? 'bg-sky-600 text-white'
+                            ? 'bg-indigo-600 text-white shadow-[0_2px_10px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]'
                             : msg.senderType === 'SYSTEM'
-                            ? 'bg-amber-50 border border-amber-200 text-amber-900 text-center w-full'
-                            : 'bg-white border border-slate-200 text-slate-800'
+                            ? 'bg-amber-950/40 border border-amber-800/40 text-amber-200 text-center w-full'
+                            : 'bg-[#181a24] border border-white/[0.08] text-zinc-100'
                         }`}
                       >
-                        <div className="flex items-center justify-between text-[10px] font-semibold mb-1 opacity-75">
+                        <div className="flex items-center justify-between text-[10px] font-semibold mb-1 opacity-75 font-mono">
                           <span>{msg.senderName}</span>
                           <span>{new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                         </div>
-                        <div className="whitespace-pre-line">{msg.content}</div>
+                        <div className="whitespace-pre-line text-zinc-100">{msg.content}</div>
 
                         {msg.citations && msg.citations.length > 0 && (
-                          <div className="mt-2 pt-1.5 border-t border-slate-100 flex flex-wrap gap-1">
+                          <div className="mt-2 pt-1.5 border-t border-white/[0.06] flex flex-wrap gap-1">
                             {msg.citations.map((c: any, i: number) => (
-                              <span key={i} className="bg-slate-100 text-slate-600 text-[9px] px-1.5 py-0.5 rounded font-mono">
+                              <span key={i} className="bg-zinc-800 text-zinc-400 text-[9px] px-1.5 py-0.5 rounded font-mono">
                                 {c.title}
                               </span>
                             ))}
@@ -324,20 +324,20 @@ function ConversationsAdminContent() {
               </div>
 
               {/* Live Operator Input Bar */}
-              <div className="p-3 bg-white border-t border-slate-200 shrink-0">
+              <div className="p-3 bg-[#12131a] border-t border-white/[0.08] shrink-0">
                 <form onSubmit={handleSendOperatorReply} className="flex items-center space-x-2">
                   <input
                     type="text"
                     value={replyText}
                     onChange={(e) => setReplyText(e.target.value)}
-                    placeholder="Reply as Human Operator (Alex Mercer)..."
-                    className="flex-1 bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition"
+                    placeholder="Reply as Human Specialist (Alex Mercer)..."
+                    className="flex-1 bg-[#0a0b0e] border border-white/[0.1] text-zinc-100 text-xs rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
                     disabled={isSending}
                   />
                   <button
                     type="submit"
                     disabled={!replyText.trim() || isSending}
-                    className="bg-sky-600 hover:bg-sky-700 disabled:opacity-40 text-white px-4 py-2.5 rounded-lg text-xs font-medium shadow-2xs transition flex items-center gap-1.5"
+                    className="bg-indigo-600 hover:bg-indigo-500 active:scale-[0.97] disabled:opacity-40 text-white px-4 py-2.5 rounded-xl text-xs font-semibold shadow-[0_2px_8px_rgba(99,102,241,0.3)] transition duration-150 flex items-center gap-1.5"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>Send Reply</span>
@@ -346,7 +346,7 @@ function ConversationsAdminContent() {
               </div>
             </>
           ) : (
-            <div className="flex-1 flex items-center justify-center text-slate-400 text-xs">
+            <div className="flex-1 flex items-center justify-center text-zinc-500 text-xs">
               Select a conversation from the left to view the live transcript and respond.
             </div>
           )}
@@ -358,7 +358,7 @@ function ConversationsAdminContent() {
 
 export default function ConversationsAdminPage() {
   return (
-    <Suspense fallback={<div className="p-6 text-xs text-slate-500">Loading conversation workspace...</div>}>
+    <Suspense fallback={<div className="p-6 text-xs text-zinc-500">Loading conversation workspace...</div>}>
       <ConversationsAdminContent />
     </Suspense>
   );

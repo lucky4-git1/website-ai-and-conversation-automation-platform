@@ -45,7 +45,7 @@ export default function ChatWidgetPage() {
     email: '',
     phone: '',
     company: '',
-    serviceInterest: 'Conversational AI',
+    serviceInterest: 'Conversational AI & Omnichannel',
     budgetRange: '$1,000 - $3,000',
     consentGiven: true
   });
@@ -54,21 +54,19 @@ export default function ChatWidgetPage() {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Initialize visitor session from localStorage
   useEffect(() => {
-    let vid = localStorage.getItem('apex_visitor_id');
+    let vid = localStorage.getItem('speakforme_visitor_id');
     if (!vid) {
       vid = 'vis_' + Math.random().toString(36).substring(2, 10);
-      localStorage.setItem('apex_visitor_id', vid);
+      localStorage.setItem('speakforme_visitor_id', vid);
     }
     setVisitorId(vid);
 
-    // Initial greeting
     const initialGreeting: Message = {
       id: 'greeting_01',
       senderType: 'AI',
-      senderName: 'Apex AI Concierge',
-      content: 'Hi there! 👋 Welcome to Apex Enterprise Solutions. I am your grounded AI assistant. How can I help you accelerate your business operations today?',
+      senderName: 'SpeakForMe Assistant',
+      content: 'Hi there! 👋 Welcome to SpeakForMe. I am your grounded conversion assistant. How can I help you automate conversations and accelerate your business today?',
       createdAt: new Date().toISOString()
     };
     setMessages([initialGreeting]);
@@ -99,7 +97,7 @@ export default function ChatWidgetPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          siteId: 'site_apex_live_01',
+          siteId: 'site_speakforme_01',
           tenantId: 'tenant_default_01',
           conversationId,
           visitorId,
@@ -108,18 +106,14 @@ export default function ChatWidgetPage() {
       });
 
       const data = await res.json();
-      if (data.conversationId) {
-        setConversationId(data.conversationId);
-      }
-      if (data.status) {
-        setStatus(data.status);
-      }
+      if (data.conversationId) setConversationId(data.conversationId);
+      if (data.status) setStatus(data.status);
 
       if (data.reply) {
         const botMsg: Message = {
           id: data.reply.id || 'bot_' + Date.now(),
           senderType: 'AI',
-          senderName: 'Apex AI Concierge',
+          senderName: 'SpeakForMe Assistant',
           content: data.reply.content,
           citations: data.reply.citations,
           recommendedItems: data.reply.recommendedItems,
@@ -128,7 +122,6 @@ export default function ChatWidgetPage() {
         };
         setMessages((prev) => [...prev, botMsg]);
 
-        // Prompt lead capture if high intent detected
         if (data.reply.suggestedAction === 'REQUEST_QUOTE' && !leadSubmitted) {
           setShowLeadModal(true);
         }
@@ -139,7 +132,7 @@ export default function ChatWidgetPage() {
         id: 'err_' + Date.now(),
         senderType: 'SYSTEM',
         senderName: 'System',
-        content: 'Connection interrupted. Please verify your network and retry.',
+        content: 'Connection interrupted. Please verify your network connection and retry.',
         createdAt: new Date().toISOString()
       };
       setMessages((prev) => [...prev, errorMsg]);
@@ -161,7 +154,7 @@ export default function ChatWidgetPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           conversationId,
-          reason: 'Visitor clicked live operator handoff in widget header'
+          reason: 'Visitor requested human specialist in SpeakForMe widget'
         })
       });
       const data = await res.json();
@@ -171,7 +164,7 @@ export default function ChatWidgetPage() {
           id: 'sys_' + Date.now(),
           senderType: 'SYSTEM',
           senderName: 'Live Operator Queue',
-          content: 'You have been placed in the priority human operator queue. An enterprise solution specialist will join this conversation shortly.',
+          content: 'You have been placed in the priority human operator queue. An enterprise specialist will join this conversation shortly.',
           createdAt: new Date().toISOString()
         };
         setMessages((prev) => [...prev, systemMsg]);
@@ -218,7 +211,7 @@ export default function ChatWidgetPage() {
           id: 'conf_' + Date.now(),
           senderType: 'SYSTEM',
           senderName: 'Verification Confirmed',
-          content: `Thank you, ${leadForm.name || 'there'}! Your information has been registered. Your lead priority score is **${data.score}/100** (${data.qualificationStatus}). A specialist will reach out to you directly.`,
+          content: `Thank you, ${leadForm.name || 'there'}! Your profile has been registered. Priority Intent Score: **${data.score}/100** (${data.qualificationStatus}). A specialist will follow up shortly.`,
           createdAt: new Date().toISOString()
         };
         setMessages((prev) => [...prev, confirmMsg]);
@@ -232,6 +225,7 @@ export default function ChatWidgetPage() {
 
   const handleClose = () => {
     if (window.parent) {
+      window.parent.postMessage('speakforme-close-widget', '*');
       window.parent.postMessage('apex-ai-close-widget', '*');
     }
   };
@@ -244,75 +238,77 @@ export default function ChatWidgetPage() {
   ];
 
   return (
-    <div className="flex flex-col h-screen w-full bg-slate-50 text-slate-900 overflow-hidden font-sans select-text border border-slate-200">
-      {/* Header */}
-      <header className="bg-sky-700 text-white px-4 py-3 flex items-center justify-between shadow-md shrink-0">
+    <div className="flex flex-col h-screen w-full bg-[#0d0e12] text-zinc-100 overflow-hidden font-sans select-text border border-zinc-800/80 antialiased">
+      {/* Header - Tactile Obsidian & Electric Iris */}
+      <header className="bg-[#12131a] text-white px-4 py-3 flex items-center justify-between border-b border-white/[0.08] shadow-[0_4px_16px_rgba(0,0,0,0.4)] shrink-0">
         <div className="flex items-center space-x-3">
           <div className="relative">
-            <div className="w-10 h-10 rounded-full bg-sky-900 border-2 border-sky-300 flex items-center justify-center text-sky-100 font-bold shadow-inner">
-              <Bot className="w-6 h-6 text-sky-200" />
+            <div className="w-9 h-9 rounded-xl bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400 font-bold shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]">
+              <Bot className="w-5 h-5 text-indigo-400" />
             </div>
-            <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-sky-700 rounded-full"></span>
+            <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 border-2 border-[#12131a] rounded-full"></span>
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h1 className="font-semibold text-sm tracking-wide">Apex AI Concierge</h1>
-              <span className="bg-sky-800 text-sky-200 text-[10px] font-medium px-1.5 py-0.5 rounded uppercase tracking-wider">Grounded</span>
+              <h1 className="font-semibold text-xs tracking-tight text-zinc-100">SpeakForMe</h1>
+              <span className="bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 text-[9px] font-semibold px-1.5 py-0.2 rounded uppercase tracking-wider">
+                Grounded
+              </span>
             </div>
-            <p className="text-xs text-sky-200 flex items-center gap-1">
+            <p className="text-[11px] text-zinc-400 flex items-center gap-1.5">
               {status === 'HANDOFF_REQUESTED' ? (
-                <span className="text-amber-200 font-medium animate-pulse">● Waiting for live agent...</span>
+                <span className="text-amber-400 font-medium animate-pulse">● Waiting for live agent...</span>
               ) : status === 'HUMAN_ACTIVE' ? (
-                <span className="text-emerald-200 font-medium">● Connected with Live Specialist</span>
+                <span className="text-emerald-400 font-medium">● Connected with Live Specialist</span>
               ) : (
-                <span>Online • 24/7 Knowledge Verified</span>
+                <span>Online • 24/7 Verified Grounding</span>
               )}
             </p>
           </div>
         </div>
 
-        <div className="flex items-center space-x-1">
+        <div className="flex items-center space-x-1.5">
           {status === 'AI_ACTIVE' && (
             <button
               onClick={handleRequestHandoff}
-              className="text-xs bg-sky-800 hover:bg-sky-900 border border-sky-500 text-sky-100 px-2.5 py-1 rounded-md flex items-center gap-1 transition"
-              title="Request a human operator"
+              className="text-[11px] bg-zinc-800 hover:bg-zinc-700 active:scale-[0.96] border border-white/10 text-zinc-200 px-2.5 py-1 rounded-lg flex items-center gap-1.5 transition duration-150 shadow-xs"
+              title="Speak with a live human specialist"
             >
-              <User className="w-3.5 h-3.5" />
+              <User className="w-3 h-3 text-indigo-400" />
               <span className="hidden sm:inline">Human Agent</span>
             </button>
           )}
 
           <button
             onClick={handleClose}
-            className="text-sky-200 hover:text-white hover:bg-sky-800 p-1 rounded-md transition"
+            className="text-zinc-400 hover:text-white hover:bg-zinc-800/80 active:scale-[0.94] p-1.5 rounded-lg transition duration-150"
             aria-label="Close widget"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
       </header>
 
-      {/* Status Bar */}
+      {/* Status Bar for Live Queue */}
       {status === 'HANDOFF_REQUESTED' && (
-        <div className="bg-amber-50 border-b border-amber-200 px-3 py-2 flex items-center justify-between text-xs text-amber-800 shrink-0">
+        <div className="bg-amber-950/40 border-b border-amber-800/40 px-3.5 py-2 flex items-center justify-between text-xs text-amber-200 shrink-0">
           <div className="flex items-center gap-1.5">
-            <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
+            <AlertCircle className="w-3.5 h-3.5 text-amber-400 shrink-0" />
             <span>Human operator requested. Queue position: #1</span>
           </div>
           {!leadSubmitted && (
             <button
               onClick={() => setShowLeadModal(true)}
-              className="underline font-semibold hover:text-amber-900 ml-2"
+              className="underline font-semibold text-amber-300 hover:text-amber-100 ml-2"
             >
-              Leave Details
+              Leave Contact
             </button>
           )}
         </div>
       )}
 
       {/* Message Feed */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#0a0b0e]">
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -322,39 +318,38 @@ export default function ChatWidgetPage() {
           >
             <div className="flex items-end gap-2 max-w-[88%]">
               {msg.senderType !== 'VISITOR' && (
-                <div className="w-7 h-7 rounded-full bg-sky-100 border border-sky-300 flex items-center justify-center shrink-0 text-sky-700">
-                  {msg.senderType === 'AI' ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4 text-emerald-700" />}
+                <div className="w-6 h-6 rounded-lg bg-zinc-800 border border-zinc-700/80 flex items-center justify-center shrink-0 text-zinc-300 text-xs shadow-xs">
+                  {msg.senderType === 'AI' ? <Bot className="w-3.5 h-3.5 text-indigo-400" /> : <User className="w-3.5 h-3.5 text-emerald-400" />}
                 </div>
               )}
 
               <div
-                className={`rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-sm ${
+                className={`rounded-2xl px-4 py-2.5 text-xs leading-relaxed transition shadow-sm ${
                   msg.senderType === 'VISITOR'
-                    ? 'bg-sky-600 text-white rounded-br-none'
+                    ? 'bg-indigo-600 text-white rounded-br-xs shadow-[0_2px_8px_rgba(99,102,241,0.35),inset_0_1px_0_0_rgba(255,255,255,0.2)]'
                     : msg.senderType === 'SYSTEM'
-                    ? 'bg-amber-50 border border-amber-200 text-amber-900 rounded-lg w-full text-xs'
-                    : 'bg-white border border-slate-200 text-slate-800 rounded-bl-none'
+                    ? 'bg-zinc-900 border border-amber-500/30 text-amber-200 rounded-xl w-full text-[11px]'
+                    : 'bg-[#15171e] border border-white/[0.08] text-zinc-200 rounded-bl-xs shadow-[0_2px_6px_rgba(0,0,0,0.25)]'
                 }`}
               >
-                {/* Message Sender Name */}
                 {msg.senderType !== 'VISITOR' && msg.senderType !== 'SYSTEM' && (
-                  <div className="text-[11px] font-semibold text-slate-400 mb-1">
+                  <div className="text-[10px] font-semibold text-zinc-400 mb-1">
                     {msg.senderName}
                   </div>
                 )}
 
-                <div className="whitespace-pre-line">{msg.content}</div>
+                <div className="whitespace-pre-line text-zinc-100">{msg.content}</div>
 
                 {/* Grounded Source Citations */}
                 {msg.citations && msg.citations.length > 0 && (
-                  <div className="mt-2.5 pt-2 border-t border-slate-100 flex flex-wrap gap-1.5">
+                  <div className="mt-2.5 pt-2 border-t border-white/[0.06] flex flex-wrap gap-1.5">
                     {msg.citations.map((c, idx) => (
                       <span
                         key={idx}
-                        className="inline-flex items-center gap-1 bg-slate-100 text-slate-600 text-[10px] px-2 py-0.5 rounded-full font-medium"
+                        className="inline-flex items-center gap-1 bg-zinc-800/80 border border-zinc-700/60 text-zinc-300 text-[10px] px-2 py-0.5 rounded-full font-mono"
                         title={c.snippet}
                       >
-                        <Shield className="w-2.5 h-2.5 text-sky-600" />
+                        <Shield className="w-2.5 h-2.5 text-indigo-400" />
                         {c.title}
                       </span>
                     ))}
@@ -367,14 +362,14 @@ export default function ChatWidgetPage() {
                     {msg.recommendedItems.map((item) => (
                       <div
                         key={item.id}
-                        className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs space-y-1.5 hover:border-sky-300 transition"
+                        className="bg-[#1b1d26] border border-white/[0.08] rounded-xl p-3 text-xs space-y-1.5 hover:border-indigo-500/40 transition duration-150"
                       >
-                        <div className="flex items-center justify-between font-semibold text-slate-900">
+                        <div className="flex items-center justify-between font-semibold text-zinc-100">
                           <span>{item.name}</span>
-                          <span className="text-sky-600 font-bold">{item.priceDisplay}</span>
+                          <span className="text-indigo-400 font-bold font-mono">{item.priceDisplay}</span>
                         </div>
-                        <p className="text-slate-600 text-[11px]">{item.description}</p>
-                        <ul className="text-slate-500 text-[11px] list-disc list-inside">
+                        <p className="text-zinc-400 text-[11px] leading-relaxed">{item.description}</p>
+                        <ul className="text-zinc-400 text-[11px] list-disc list-inside space-y-0.5">
                           {item.features.slice(0, 2).map((f, i) => (
                             <li key={i}>{f}</li>
                           ))}
@@ -384,7 +379,7 @@ export default function ChatWidgetPage() {
                             setLeadForm((prev) => ({ ...prev, serviceInterest: item.name }));
                             setShowLeadModal(true);
                           }}
-                          className="w-full mt-1 bg-sky-600 hover:bg-sky-700 text-white font-medium py-1 px-2 rounded-lg flex items-center justify-center gap-1 transition"
+                          className="w-full mt-1 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-medium py-1.5 px-2 rounded-lg flex items-center justify-center gap-1 transition duration-150 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] text-[11px]"
                         >
                           Request Quotation for {item.name}
                           <ChevronRight className="w-3.5 h-3.5" />
@@ -396,18 +391,18 @@ export default function ChatWidgetPage() {
               </div>
             </div>
 
-            <span className="text-[10px] text-slate-400 mt-1 px-1">
+            <span className="text-[10px] text-zinc-500 mt-1 px-1 font-mono">
               {new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             </span>
           </div>
         ))}
 
         {isLoading && (
-          <div className="flex items-center space-x-2 text-slate-400 text-xs py-2">
-            <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center animate-pulse">
-              <Bot className="w-3.5 h-3.5 text-slate-500" />
+          <div className="flex items-center space-x-2 text-zinc-400 text-xs py-2">
+            <div className="w-5 h-5 rounded-lg bg-zinc-800 flex items-center justify-center animate-pulse">
+              <Bot className="w-3 h-3 text-indigo-400" />
             </div>
-            <span className="italic">Verifying grounded business knowledge...</span>
+            <span className="italic text-[11px]">Verifying approved business knowledge...</span>
           </div>
         )}
 
@@ -416,16 +411,16 @@ export default function ChatWidgetPage() {
 
       {/* Suggested Quick Questions */}
       {messages.length <= 2 && (
-        <div className="px-4 py-2 bg-slate-100/70 border-t border-slate-200 shrink-0">
-          <div className="text-[11px] font-medium text-slate-500 mb-1.5 flex items-center gap-1">
-            <Sparkles className="w-3 h-3 text-sky-600" /> Suggested questions:
+        <div className="px-4 py-2.5 bg-[#101116] border-t border-white/[0.06] shrink-0">
+          <div className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mb-1.5 flex items-center gap-1">
+            <Sparkles className="w-3 h-3 text-indigo-400" /> Suggested Inquiries:
           </div>
           <div className="flex flex-wrap gap-1.5">
             {suggestedChips.map((chip, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSendMessage(chip)}
-                className="bg-white hover:bg-sky-50 hover:border-sky-300 text-slate-700 border border-slate-200 text-xs px-2.5 py-1 rounded-full text-left transition shadow-2xs"
+                className="bg-zinc-800/80 hover:bg-zinc-700/80 active:scale-[0.97] text-zinc-300 border border-zinc-700/60 text-[11px] px-2.5 py-1 rounded-lg text-left transition duration-150"
               >
                 {chip}
               </button>
@@ -435,7 +430,7 @@ export default function ChatWidgetPage() {
       )}
 
       {/* Input Area */}
-      <footer className="p-3 bg-white border-t border-slate-200 shrink-0">
+      <footer className="p-3 bg-[#12131a] border-t border-white/[0.08] shrink-0">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -447,39 +442,39 @@ export default function ChatWidgetPage() {
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
-            placeholder={status === 'HUMAN_ACTIVE' ? 'Type your message to human specialist...' : 'Ask about services, pricing, SLA, or CRM sync...'}
-            className="flex-1 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white transition"
+            placeholder={status === 'HUMAN_ACTIVE' ? 'Type your message to human specialist...' : 'Ask about services, pricing, SLA, or WhatsApp sync...'}
+            className="flex-1 bg-[#0a0b0e] border border-white/[0.1] text-zinc-100 text-xs rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 placeholder-zinc-500 transition duration-150"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={!inputText.trim() || isLoading}
-            className="bg-sky-600 hover:bg-sky-700 disabled:opacity-40 text-white p-2.5 rounded-xl shadow-sm transition flex items-center justify-center"
+            className="bg-indigo-600 hover:bg-indigo-500 active:scale-[0.95] disabled:opacity-40 text-white p-2.5 rounded-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] transition duration-150 flex items-center justify-center"
             aria-label="Send message"
           >
-            <Send className="w-4 h-4" />
+            <Send className="w-3.5 h-3.5" />
           </button>
         </form>
 
         <div className="mt-2 text-center">
-          <p className="text-[10px] text-slate-400">
-            Strict Zero-Hallucination Grounding • Encrypted & Isolated Session
+          <p className="text-[10px] text-zinc-500 font-mono">
+            SpeakForMe Zero-Hallucination Engine • Encrypted Session
           </p>
         </div>
       </footer>
 
       {/* Lead Qualification Modal / Drawer */}
       {showLeadModal && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-3 z-50">
-          <div className="bg-white rounded-2xl shadow-xl border border-slate-200 w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-150">
-            <div className="bg-sky-700 text-white px-4 py-3 flex items-center justify-between">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 z-50">
+          <div className="bg-[#14151e] rounded-2xl shadow-2xl border border-white/10 w-full max-w-sm overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+            <div className="bg-indigo-600 px-4 py-3 flex items-center justify-between text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)]">
               <div className="flex items-center space-x-2">
-                <Building2 className="w-5 h-5 text-sky-200" />
-                <h3 className="font-semibold text-sm">Priority Consultation & Quote</h3>
+                <Building2 className="w-4 h-4 text-white" />
+                <h3 className="font-semibold text-xs tracking-tight">Priority Consultation & Quote</h3>
               </div>
               <button
                 onClick={() => setShowLeadModal(false)}
-                className="text-sky-200 hover:text-white p-1 rounded"
+                className="text-white/80 hover:text-white p-1 rounded transition"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -487,57 +482,57 @@ export default function ChatWidgetPage() {
 
             <form onSubmit={handleLeadSubmit} className="p-4 space-y-3 text-xs">
               <div>
-                <label className="block text-slate-700 font-medium mb-1">Your Full Name</label>
+                <label className="block text-zinc-300 font-medium mb-1">Your Full Name</label>
                 <input
                   type="text"
                   required
                   value={leadForm.name}
                   onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
                   placeholder="e.g. Sarah Connor"
-                  className="w-full border border-slate-300 rounded-lg p-2 focus:ring-2 focus:ring-sky-500 focus:outline-none"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-700 font-medium mb-1">Work Email Address</label>
+                <label className="block text-zinc-300 font-medium mb-1">Work Email Address</label>
                 <input
                   type="email"
                   required
                   value={leadForm.email}
                   onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
                   placeholder="sarah@company.com"
-                  className="w-full border border-slate-300 rounded-lg p-2 focus:ring-2 focus:ring-sky-500 focus:outline-none"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-700 font-medium mb-1">Phone / WhatsApp (Optional)</label>
+                <label className="block text-zinc-300 font-medium mb-1">Phone / WhatsApp (Optional)</label>
                 <input
                   type="tel"
                   value={leadForm.phone}
                   onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
                   placeholder="+1 (555) 019-2834"
-                  className="w-full border border-slate-300 rounded-lg p-2 focus:ring-2 focus:ring-sky-500 focus:outline-none"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-700 font-medium mb-1">Company / Organization</label>
+                <label className="block text-zinc-300 font-medium mb-1">Company / Organization</label>
                 <input
                   type="text"
                   value={leadForm.company}
                   onChange={(e) => setLeadForm({ ...leadForm, company: e.target.value })}
                   placeholder="Cyberdyne Systems"
-                  className="w-full border border-slate-300 rounded-lg p-2 focus:ring-2 focus:ring-sky-500 focus:outline-none"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-700 font-medium mb-1">Target Package Interest</label>
+                <label className="block text-zinc-300 font-medium mb-1">Target Package Interest</label>
                 <select
                   value={leadForm.serviceInterest}
                   onChange={(e) => setLeadForm({ ...leadForm, serviceInterest: e.target.value })}
-                  className="w-full border border-slate-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-sky-500 focus:outline-none"
+                  className="w-full bg-[#0a0b0e] border border-zinc-700 rounded-lg p-2 text-zinc-100 focus:ring-1 focus:ring-indigo-500 focus:outline-none"
                 >
                   <option value="Growth Conversational AI Package">Growth Package ($499/mo)</option>
                   <option value="Professional Omnichannel & CRM Suite">Professional Suite ($1,299/mo)</option>
@@ -552,17 +547,17 @@ export default function ChatWidgetPage() {
                   required
                   checked={leadForm.consentGiven}
                   onChange={(e) => setLeadForm({ ...leadForm, consentGiven: e.target.checked })}
-                  className="mt-0.5 rounded text-sky-600 focus:ring-sky-500"
+                  className="mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 bg-[#0a0b0e] border-zinc-700"
                 />
-                <label htmlFor="consent" className="text-[11px] text-slate-600 leading-tight">
-                  I agree to receive communications regarding this inquiry in accordance with the Privacy Policy. You can opt out at any time.
+                <label htmlFor="consent" className="text-[11px] text-zinc-400 leading-tight">
+                  I agree to receive communications regarding this inquiry. You can opt out at any time.
                 </label>
               </div>
 
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-sky-600 hover:bg-sky-700 text-white font-medium py-2 rounded-lg transition mt-2 shadow-sm"
+                className="w-full bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white font-medium py-2 rounded-lg transition duration-150 mt-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]"
               >
                 {isLoading ? 'Submitting & Qualifying...' : 'Submit & Connect with Specialist'}
               </button>

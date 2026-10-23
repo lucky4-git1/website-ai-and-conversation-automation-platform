@@ -6,7 +6,7 @@ import { getDb } from '@/lib/db';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { siteId = 'site_apex_live_01', tenantId = 'tenant_default_01', conversationId, visitorId, content, senderName } = body;
+    const { siteId = 'site_speakforme_01', tenantId = 'tenant_default_01', conversationId, visitorId, content, senderName } = body;
 
     if (!visitorId || !content || typeof content !== 'string') {
       return NextResponse.json({ error: 'visitorId and content string are required.' }, { status: 400 });

@@ -30,7 +30,7 @@ async function runTestSuite() {
   console.log('======================================================\n');
 
   const tenantId = 'tenant_default_01';
-  const siteId = 'site_apex_live_01';
+  const siteId = 'site_speakforme_01';
 
   // 1. TC-01: Grounded FAQ Answering
   await test('TC-01: Visitor asks verified pricing question and receives grounded response with citations', async () => {

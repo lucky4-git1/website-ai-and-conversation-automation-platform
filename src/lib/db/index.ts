@@ -44,24 +44,24 @@ function seedInitialData(db: DatabaseSync) {
     const now = new Date().toISOString();
     // 1. Default Tenant
     db.prepare(`
-      INSERT INTO tenants (id, name, slug, created_at, updated_at)
+      INSERT OR REPLACE INTO tenants (id, name, slug, created_at, updated_at)
       VALUES (?, ?, ?, ?, ?)
-    `).run('tenant_default_01', 'Apex Enterprise Solutions', 'apex-solutions', now, now);
+    `).run('tenant_default_01', 'SpeakForMe Technologies', 'speakforme', now, now);
 
     // 2. Default User / Admin
     db.prepare(`
-      INSERT INTO users (id, tenant_id, name, email, role, avatar_url, created_at)
+      INSERT OR REPLACE INTO users (id, tenant_id, name, email, role, avatar_url, created_at)
       VALUES (?, ?, ?, ?, ?, ?, ?)
-    `).run('user_admin_01', 'tenant_default_01', 'Alex Mercer (Lead Solutions Architect)', 'alex.mercer@apexsolutions.example.com', 'ADMIN', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=128&q=80', now);
+    `).run('user_admin_01', 'tenant_default_01', 'Alex Mercer (Lead Solutions Architect)', 'alex.mercer@speakforme.example.com', 'ADMIN', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=128&q=80', now);
 
     // 3. Default Installation
     const defaultWidgetConfig = JSON.stringify({
-      primaryColor: '#0284c7', // Sky 600
-      title: 'Apex AI Concierge',
-      welcomeMessage: 'Hi there! 👋 Welcome to Apex Enterprise Solutions. How can I help you accelerate your business operations today?',
+      primaryColor: '#6366f1', // Electric Iris / Indigo
+      title: 'SpeakForMe AI Concierge',
+      welcomeMessage: 'Hi there! 👋 Welcome to SpeakForMe. How can I help you automate conversations and accelerate conversions today?',
       suggestedQuestions: [
         'What enterprise AI services do you offer?',
-        'Can I get pricing for CRM integration?',
+        'What are your pricing plans?',
         'How does live-chat handoff work?',
         'Speak to a human consultant'
       ],
@@ -71,32 +71,32 @@ function seedInitialData(db: DatabaseSync) {
     });
 
     db.prepare(`
-      INSERT INTO installations (id, tenant_id, site_id, name, allowed_domains, widget_config, created_at, updated_at)
+      INSERT OR REPLACE INTO installations (id, tenant_id, site_id, name, allowed_domains, widget_config, created_at, updated_at)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `).run('inst_01', 'tenant_default_01', 'site_apex_live_01', 'Apex Main Web Portal', 'localhost,127.0.0.1,example.com', defaultWidgetConfig, now, now);
+    `).run('inst_01', 'tenant_default_01', 'site_speakforme_01', 'SpeakForMe Web Portal', 'localhost,127.0.0.1,example.com', defaultWidgetConfig, now, now);
 
     // 4. Seed Verified Knowledge Base
     const sources = [
       {
         id: 'kb_01',
-        title: 'Apex Enterprise Services & Capabilities Overview',
+        title: 'SpeakForMe Services & Platform Capabilities Overview',
         type: 'TEXT',
-        content: `Apex Enterprise Solutions delivers 3 flagship enterprise service tiers:
-1. Conversational AI & Omnichannel Automation: Custom RAG-based AI assistants grounded in your business catalog and docs, with real-time live human handoff, sub-second latency, and WhatsApp Business API integration.
+        content: `SpeakForMe Technologies delivers 3 flagship enterprise service tiers:
+1. Grounded Conversational AI & Omnichannel Automation: Custom RAG-based AI assistants strictly grounded in your business catalog and docs, with real-time live human handoff, sub-second latency, and WhatsApp Business API integration.
 2. CRM & Pipeline Synchronization: Bi-directional synchronization between website conversions, HubSpot CRM, and custom webhooks with automated lead scoring and retry queues.
 3. Conversion Journey & Workflow Engine: Interactive multi-step lead qualification, dynamic smart forms, and consent-aware automated follow-up sequences observing strict quiet hours.`,
         chunks: [
-          'Apex Enterprise Solutions delivers 3 flagship enterprise service tiers: Conversational AI & Omnichannel Automation, CRM & Pipeline Synchronization, and Conversion Journey & Workflow Engine.',
+          'SpeakForMe delivers 3 flagship enterprise service tiers: Conversational AI & Omnichannel Automation, CRM & Pipeline Synchronization, and Conversion Journey & Workflow Engine.',
           'Conversational AI & Omnichannel Automation features custom RAG-based AI assistants grounded in business catalogs and docs, with real-time live human handoff and WhatsApp Business API integration.',
           'CRM & Pipeline Synchronization provides bi-directional sync with HubSpot CRM and custom webhooks with automated lead scoring and retry queues.'
         ]
       },
       {
         id: 'kb_02',
-        title: 'Apex Transparent Pricing & Service Tiers',
+        title: 'SpeakForMe Transparent Pricing & Service Tiers',
         type: 'FAQ',
         content: `Q: What are your pricing plans?
-A: Apex offers 3 transparent investment plans:
+A: SpeakForMe offers 3 transparent investment plans:
 - Growth Plan: $499/month. Includes up to 5,000 monthly conversations, custom AI knowledge grounding, embeddable website widget, and standard email follow-up workflows.
 - Professional Plan: $1,299/month. Includes up to 25,000 monthly conversations, WhatsApp Business Cloud API integration, real-time live agent handoff inbox, and HubSpot CRM bi-directional sync.
 - Enterprise Custom: Starting from $2,999/month. Unlimited conversations, dedicated SLA, custom ERP integrations, multi-tenant isolation, on-premise deployment options, and bespoke AI tuning.
@@ -107,7 +107,7 @@ A: No. Growth and Professional tiers have zero setup fees. Enterprise implementa
 Q: What is your refund or cancellation policy?
 A: We provide a 30-day money-back satisfaction guarantee on all monthly plans. You can cancel at any time with 1-click in the billing settings.`,
         chunks: [
-          'Apex offers 3 pricing plans: Growth Plan at $499/month (5k conversations, custom AI grounding, website widget), Professional Plan at $1,299/month (25k conversations, WhatsApp Business API, live agent handoff, HubSpot sync), and Enterprise Custom starting from $2,999/month.',
+          'SpeakForMe offers 3 pricing plans: Growth Plan at $499/month (5k conversations, custom AI grounding, website widget), Professional Plan at $1,299/month (25k conversations, WhatsApp Business API, live agent handoff, HubSpot sync), and Enterprise Custom starting from $2,999/month.',
           'Zero setup fees on Growth and Professional tiers. Enterprise onboarding has a one-time integration fee of $1,500. 30-day money-back satisfaction guarantee on all monthly plans.'
         ]
       },

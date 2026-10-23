@@ -3,12 +3,16 @@ import { getDb } from '@/lib/db';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const siteId = searchParams.get('siteId') || 'site_apex_live_01';
+  const siteId = searchParams.get('siteId') || 'site_speakforme_01';
   const db = getDb();
 
-  const installation = db.prepare(`
+  let installation = db.prepare(`
     SELECT * FROM installations WHERE site_id = ?
   `).get(siteId) as any;
+
+  if (!installation) {
+    installation = db.prepare('SELECT * FROM installations LIMIT 1').get() as any;
+  }
 
   if (!installation) {
     return NextResponse.json({ error: 'Installation site ID not recognized' }, { status: 404 });
