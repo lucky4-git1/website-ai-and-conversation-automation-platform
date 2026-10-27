@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import Script from 'next/script';
 import {
   Sparkles,
   Bot,
@@ -33,18 +34,6 @@ export default function ClientLandingPage() {
   const [formSubmitting, setFormSubmitting] = useState(false);
   const [formSuccessMessage, setFormSuccessMessage] = useState<string | null>(null);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
-
-  useEffect(() => {
-    const existing = document.getElementById('speakforme-widget-script');
-    if (!existing) {
-      const script = document.createElement('script');
-      script.id = 'speakforme-widget-script';
-      script.src = '/widget.js';
-      script.setAttribute('data-site-id', 'site_speakforme_01');
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, []);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -448,6 +437,14 @@ export default function ClientLandingPage() {
           </div>
         </div>
       </footer>
+
+      {/* Reusable Client Embed Widget */}
+      <Script
+        id="speakforme-widget-script"
+        src="/widget.js"
+        data-site-id="site_speakforme_01"
+        strategy="lazyOnload"
+      />
     </div>
   );
 }

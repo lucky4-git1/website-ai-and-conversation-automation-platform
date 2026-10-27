@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  if (window.SpeakForMeWidgetLoaded) return;
+  if (window.SpeakForMeWidgetLoaded || document.getElementById('speakforme-widget-container')) return;
   window.SpeakForMeWidgetLoaded = true;
 
   var scriptTag = document.currentScript || (function () {
